@@ -30,6 +30,17 @@ Esse script, quando executado, instalará todos os pacotes e copiará todos os a
 
 ## Histórico de Atualizações ##
 <details>
+    <summary>v0.1.1: arquivos e fontes</summary>
+
+* adicionando arquivos de configuracao para:
+    * hyprland
+    * kitty
+    * bashrc
+    * neofetch
+    * vim
+* adicionando a fonte usada;
+</details>
+<details>
     <summary>v0.1.0: archinstall</summary>
 
 * início do tutorial da parte 2;
