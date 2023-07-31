@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/guto/.vim'
+let g:netrw_dirhist_5='/home/guto/arch-hyprland/dotfiles/Vim'
+let g:netrw_dirhist_4='/home/guto/arch-hyprland/2-tutorial-hyprland'
+let g:netrw_dirhist_3='/home/guto/arch-hyprland'
+let g:netrw_dirhist_2='/home/guto/arch-hyprland/2-tutorial-hyprland'
+let g:netrw_dirhist_1='/home/guto/arch-hyprland'

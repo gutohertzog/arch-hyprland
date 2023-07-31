@@ -29,7 +29,7 @@ O [Hyprland](https://hyprland.org/) vem configurado para uso padrão de terminal
 
 Use o comando abaixo para instalar ambos:
 ```shell
-pacman -S kitty hyprlan
+pacman -S kitty hyprland
 ```
 
 Agora que ambos já estão instalados, a configuração poderá ser continuada já usando o Hyprland e o terminal kitty.
