@@ -39,4 +39,6 @@ noremap <leader>, :nohl<CR>
 noremap <leader><CR> :bel term<CR>
 tnoremap <leader><leader><Esc> exit<CR>
 
+" NERDTree
+noremap <leader>e :NERDTreeToggle<CR>
 

@@ -5,12 +5,12 @@ filetype indent on
 syntax on
 
 set background=dark
+set guifont=CaskaydiaCove_Nerd_Font:h13
 set splitright
 set splitbelow
 set backspace=indent,eol,start
 set t_Co=256
 set termguicolors
-colorscheme desert
 
 set ruler
 set number
@@ -42,4 +42,7 @@ set wildmode=list:longest
 
 set colorcolumn=80,100
 set encoding=utf-8
+
+set clipboard=unnamedplus
+set clipboard+=unnamed
 
