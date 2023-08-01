@@ -30,7 +30,13 @@ Esse script, quando executado, instalará todos os pacotes e copiará todos os a
 
 ## Histórico de Atualizações ##
 <details>
-    <summary>v0.1.2: Tutorial 2 & fonte removida</summary>
+    <summary>v0.1.3: README ajuste</summary>
+
+* ajuste no README;
+</details>
+<details>
+    <summary>v0.1.2: tutorial 2 & fonte removida</summary>
+
 * ajustes no Tutorial 2;
 * organização das pastas no `dotfiles`;
 * removida a pasta `Fontes` para deixar o repositório mais leve;
@@ -39,6 +45,7 @@ Esse script, quando executado, instalará todos os pacotes e copiará todos os a
 </details>
 <details>
     <summary>v0.1.1: arquivos e fontes</summary>
+
 * adicionando arquivos de configuracao para:
     * hyprland
     * kitty
@@ -49,12 +56,14 @@ Esse script, quando executado, instalará todos os pacotes e copiará todos os a
 </details>
 <details>
     <summary>v0.1.0: archinstall</summary>
+
 * início do Tutorial 2;
 * finalização do Tutorial 1 usando o archinstall;
 * ajustes no README inicial;
 </details>
 <details>
-    <summary>v0.0.1: Criação</summary>
+    <summary>v0.0.1: criação</summary>
+
 * criação dos READMEs e das pastas;
 * criação do repositório;
 </details>
