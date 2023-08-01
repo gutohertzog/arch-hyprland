@@ -1,6 +1,6 @@
 # Instalação Arch Linux #
 
-Essa é a primeira parte.
+Essa primeira parte vai contar com todo o passo a passo da instalação usando o `archinstall`.
 
 - - - -
 ## 1. Baixando ISO ##
@@ -30,16 +30,15 @@ Em um computador/notebook desligado, coloque o pen drive e inicialize o computad
 Consulte seu fabricante para saber como realizar essa operação.
 
 ### 3.1. Conectando à Internet ###
-Para realizar a instalação completa, é necessário que esteja conectado à internet.
+O Arch Linux, diferente de outras distribuições Linux, é baixado durante a instalação. Então, para conseguir realizar a instalação, é necessário que a máquina esteja conectada à internet.
 
-Se ela for cabeada, a imagem de instalação do Arch Linux é capaz de identificar e realizar a conexão automaticamente e esse passo pode ser pulado.
-Senão, é necessário realizar a conexão manualmente. Para isso, siga os passos abaixo.
+Se ela for cabeada, a imagem de instalação do Arch Linux é capaz de identificar e realizar a conexão automaticamente e o passo da `Conexão Manual` pode ser pulado. Senão, é necessário realizar a conexão manualmente. Para isso, siga os passos abaixo.
 
 ### 3.2. Conexão Manual ###
 A partir do terminal, diversos comandos deverão ser executados.
 
 Siga os passos abaixo:
-- busque as opções de conexões com o comando [`rfkill`](https://linuxconfig.org/how-to-manage-wifi-interfaces-with-rfkill-command-on-linux):
+- busque as opções de conexões com o comando [`rfkill`](https://wiki.archlinux.org/title/Network_configuration/Wireless#Rfkill_caveat):
     ```shell
     rfkill
     ```
@@ -48,7 +47,7 @@ Siga os passos abaixo:
     rfkill unblock wlan
     ```
 - uma nova verificação de desbloqueio pode ser feita chamando o `rfkill`;
-- agora, é necessário incializar o [`iwctl`](https://man.archlinux.org/man/iwctl.1):
+- agora, é necessário incializar o [`iwctl`](https://wiki.archlinux.org/title/iwd):
     ```shell
     iwctl
     ```
@@ -91,7 +90,7 @@ Siga os passos abaixo:
 ### 3.3. Instalação ###
 Uma vez que a conexão com a internet está efetuada, pode-se iniciar a instalação efetiva do Arch Linux.
 
-Para isso, digite o comando [`archinstall`](https://archinstall.readthedocs.io/installing/guided.html) e, dessa forma, iniciar a instalação. Isso irá abrir uma lista com diversas opções.
+Digite o comando [`archinstall`](https://archinstall.readthedocs.io/installing/guided.html) e, dessa forma, iniciar a instalação. Isso irá abrir uma lista com diversas opções.
 
 Abaixo, há uma lista com todas as configurações usadas.
 Os campos que estiverem destacados são para serem usados com as referidas configurações. Já os demais, são de configuração sugerida, mas que podem ser alterados de acordo com a preferência de quem estiver instalando.
@@ -133,15 +132,16 @@ rebot
 ### 3.4. Conectando ###
 A conexão com a internet usada anteriormente foi configurada apenas para a instalação.
 
-Agora, é preciso se conectar novamente, mas agora usando o [nmcli](https://www.tecmint.com/nmcli-configure-network-connection/).
+Agora, é preciso se conectar novamente, mas agora usando o [nmcli](https://wiki.archlinux.org/title/NetworkManager#Usage). Dessa forma, a conexão será persistida entre os reboots. Esse pacote foi instalado quando a opção `Use NetworkManager` foi selecionada na lista do `archinstall`.
 
-Para isso, use o comando abaixo substituindo `<rede>` pela rede que quer conectar e `<senha>` pela senha da rede.
+Para se conectar à internet, use o comando abaixo substituindo `<rede>` pela rede que quer conectar e `<senha>` pela senha da rede:
 ```shell
 nmcli device wifi connect <rede> password <senha>
 ```
 
 Use o comando do `ping` para testar a conexão.
 
+- - - -
 ## 4. Próximo Passo ###
-Agora que o sistema está instalado, vá para a etapa da instalação manual ou automática.
+Agora que o sistema está instalado e conectado à internet, vá para a etapa da instalação manual ou automática.
 

@@ -30,26 +30,31 @@ Esse script, quando executado, instalará todos os pacotes e copiará todos os a
 
 ## Histórico de Atualizações ##
 <details>
+    <summary>v0.1.2: Tutorial 2 & fonte removida</summary>
+* ajustes no Tutorial 2;
+* organização das pastas no `dotfiles`;
+* removida a pasta `Fontes` para deixar o repositório mais leve;
+    * a fonte agora é baixada diretamente;
+* ajustes de links e descrições no Tutorial 1;
+</details>
+<details>
     <summary>v0.1.1: arquivos e fontes</summary>
-
 * adicionando arquivos de configuracao para:
     * hyprland
     * kitty
     * bashrc
     * neofetch
     * vim
-* adicionando a fonte usada;
+* adicionando os arquivos `ttf` do CaskaydiaCove Nerd Font;
 </details>
 <details>
     <summary>v0.1.0: archinstall</summary>
-
-* início do tutorial da parte 2;
-* finalização do tutorial usando o archinstall (parte 1);
+* início do Tutorial 2;
+* finalização do Tutorial 1 usando o archinstall;
 * ajustes no README inicial;
 </details>
 <details>
     <summary>v0.0.1: Criação</summary>
-
 * criação dos READMEs e das pastas;
 * criação do repositório;
 </details>

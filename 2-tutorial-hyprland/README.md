@@ -6,59 +6,137 @@ Para não ficar muito extenso, quando novas ferramentas e pacotes forem apresent
 
 Apenas as configurações alteradas serão mencionadas. As demais, devem ser tratadas como as configurações padrão da instalação de cada pacote/ferramenta.
 
-## 1. Pacotes Necessários ##
-Primeiro, é necessário instalar:
-- [Vim](https://www.tutorialspoint.com/vim/index.htm): para editar os documentos;
-- [Git](https://git-scm.com/docs/gittutorial) para baixar alguns programas e pacotes;
+- - - -
+## 1. Preparando o Ambiente ##
+Antes de começar a instalar os pacotes, é necessário realizar a instalação de alguns pacotes mais básicos e configurá-los.
+
+### 1.1. Pacotes Básicos ###
+Primeiro, é necessário instalar alguns pacotes importantes.
+
+São eles:
+- [Vim](https://wiki.archlinux.org/title/vim): para editar os arquivos de configuração;
+- [Git](https://wiki.archlinux.org/title/git) para baixar programas e pacotes;
 - [neofetch](https://linuxnightly.com/neofetch-command-in-linux/): para mostrar alguns dados do sistema;
 ```shell
 pacman -S vim git neofetch
 ```
 
-### 1.1. Configurando o Pacman ###
-Antes de continuar, é necessário adicionar uma configuração muito importante no arquivo de configuração do [`pacman`](https://itsfoss.com/pacman-command/).
+### 1.2. Configurando o Pacman ###
+Agora que já podemos editar arquivos com Vim, é necessário adicionar uma configuração ***`importantíssima`*** no arquivo de configuração do [`pacman`](https://wiki.archlinux.org/title/pacman).
 
 Acesse o arquivo usando o comando abaixo e adicione `ILoveCandy` no tópico `Misc options`:
 ```shell
 vim /etc/pacman.conf
 ```
 
-### 1.2. Baixando o Repositório ###
-Diversos arquivos de configuração serão alterados. Todos eles estão na pasta `dotfiles` deste repositório. Então, a próxima etapa é cloná-lo para sua máquina. Para isso, execute o comando abaixo:
+### 1.3. Baixando o Repositório ###
+Diversos arquivos de configuração serão alterados. Todos eles estão na pasta `dotfiles` deste repositório. Então, a próxima etapa é cloná-lo para sua nova instalação. Para isso, execute o comando abaixo:
 ```shell
 git clone https://github.com/gutohertzog/arch-hyprland
 ```
 
 Isso deve criar uma pasta chamada `arch-hyprland` no seu diretório raiz do usuário.
 
-### 1.3. Configurando a Fonte ###
-Para diversos programas e ferramentas, será usada uma fonte baixada da internet. A fonte usada será a CaskaydiaCove Nerd Font. Ela está disponível para ser baixada no site [Nerd Fonts](https://www.nerdfonts.com) e também na pasta `dotfiles/Fontes`, já descompactada.
+### 1.4. Configurando a Fonte ###
+Para diversos programas e ferramentas, será usada uma fonte baixada da internet. Outra disponível além das que são instaladas com o Arch Linux. A fonte usada será a CaskaydiaCove Nerd Font. Ela está disponível para ser baixada no site [Nerd Fonts](https://www.nerdfonts.com) e também no [GitHub](https://github.com/ryanoasis/nerd-fonts/releases/).
 
-Todos os programas que tiverem suas fontes alteradas serão marcados, para que possam ser alterados para outra fonte de preferência de quem estiver instalando.
-
-Para instalar uma nova fonte, crie uma pasta dentro de `/usr/share/fonts` com o nome da própria fonte. Aqui se chamará `caskaydiacove-nerd-font`. Depois, copie todos os arquivos `*.ttf` para dentro da pasta criada.
+Para deixar este repositório mais leve, a fonte será baixada da internet durante a instalação. Para isso, é necessário instalar o pacote [curl](https://wiki.archlinux.org/title/CURL).
 ```shell
-cp ~/arch-hyprland/dotfiles/Fontes/CaskaydiaCove-Nerd-Font/*ttf /usr/share/fonts/caskaydiacove-nerd-font/
+pacman -S curl
 ```
 
-Depois, execute o comando [fc-cache](https://wiki.archlinux.org/title/fonts) para carregar as novas fontes para o sistema operacional:
+Depois de instalado, baixe a fonte usando o comando:
+```shell
+curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.tar.xz
+```
+
+Antes de descompactar, crie a pasta destino para as fontes que serão armazenadas. A pasta ficará dentro de `/usr/share/fonts/` com o nome da própria fonte. Aqui se chamará `caskaydiacove-nerd-font`.
+```shell
+mkdir /usr/share/fonts/caskaydiacove-nerd-font
+```
+
+Descompacte o arquivo `tar.xz` com o comando abaixo, para que todos os arquivos internos sejam copiados para a pasta criada anteriomente:
+```shell
+tar -xvf CascadiaCode.tar.xz -C /usr/share/fonts/caskaydiacove-nerd-font
+```
+
+Depois de descompactado, o arquivo `tar.xz` pode ser apagado:
+```shell
+rm CascadiaCode.tar.xz
+```
+
+Para que a fonte seja reconhecida no sistema operacional, execute o comando [fc-cache](https://wiki.archlinux.org/title/fonts):
 ```shell
 fc-cache -f -v
 ```
 
-### 1.4. Configurando o Vim ###
+`PS`.: Todos os programas que tiverem suas fontes alteradas serão marcados, para que possam ser alterados para outra fonte de preferência de quem estiver instalando.
 
+### 1.5. Configurando o Bash ###
+O [bash](https://wiki.archlinux.org/title/bash) é um shell de linha de comando. Ele pode ser configurado através do arquivo `.bashrc`, normalmente localizado no diretório raiz do usuário (o `~`).
 
-### 1.3 Hyprland e Kitty ###
-O [Hyprland](https://hyprland.org/) vem configurado para uso padrão de terminal o [kitty](https://sw.kovidgoyal.net/kitty/).
+Para configurá-lo, copie o arquivo `.bashrc` do repositório para o `~`. Ele está com uma personalização para o shell e também alguns comandos de atalhos.
+```shell
+cp ~/arch-hyprland/dotfiles/.bashrc ~/
+```
+
+Se quiser inspecioná-lo e ver os atalhos, basta abrir com o Vim e buscar por `alias`.
+
+Após copiado, recarregue o bash usando o comando source:
+```shell
+source .bashrc
+```
+
+### 1.6. Configurando o Vim ###
+O [Vim](https://www.freecodecamp.org/news/vim-beginners-guide/) será o programa usado para realizar as edições necessárias nos arquivos.
+
+Na pasta `arch-hyprland/dotfiles/` há um arquivo `.vimrc` e uma pasta `.vim` e eles já estão configurados. Para usá-los, basta copiá-los para a pasta raiz do usuário.
+```shell
+cp -r ~/arch-hyprland/dotfiles/.vim ~/
+cp ~/arch-hyprland/dotfiles/.vimrc ~/
+```
+
+Isso irá copiar o arquivo `.vimrc` e a pasta `.vim` para a pasta raiz do usuário. Ambos são usados para configurar e deixar o Vim com um visual mais amigável. Após a cópia, execute o Vim e o comando `:PlugInstall`. Isso instalará todos os plugins configurados no arquivo `~/.vim/plugins.vim`. Na próxima execução, ele estará com seus plugins funcionais.
+
+Se quiser alterar a fonte do Vim, altere a variável `guifont` no arquivo `~/.vim/options.vim`.
+
+- - - -
+## 2. Hyprland e Kitty ##
+Agora que todos os pacotes básicos já estão configurados, já podemos instalar o Hyprland e o Kitty.
+
+### 2.1. Instalando ###
+Por padrão, o [Hyprland](https://hyprland.org/) vem configurado para uso do terminal [kitty](https://sw.kovidgoyal.net/kitty/). Então, ambos serão instalados ao mesmo tempo.
 
 Use o comando abaixo para instalar ambos:
 ```shell
 pacman -S kitty hyprland
 ```
 
-Agora que ambos já estão instalados, a configuração poderá ser continuada já usando o Hyprland e o terminal kitty.
+### 2.2. Configurando ###
+Agora que ambos já estão instalados, é necessário copiar os arquivos de configuração deles.
 
-Para instalar as fontes, 
+Se buscar com o comando `ls -la`, verá que há uma nova pasta na raiz do seu usuário chamada `.config`. Ela será responsável por guardar quase todos arquivos de configuração para seu usuário.
 
+Então, agora é necessário copiar os arquivos de configuração do Hyprland e do Kitty do repositório para essa pasta.
+```shell
+cp ~/arch-hyprland/dotfiles/.config/hypr ~/.config/
+cp ~/arch-hyprland/dotfiles/.config/kitty ~/.config/
+```
+
+#### 2.2.1. kitty.conf ####
+Como o arquivo `kitty.conf` é muito extenso, todas as configurações personalizadas dele estão agrupadas no começo do arquivo, no bloco `Configurações Personalizadas`. Dessa forma, não é necessário ficar navegando pelas categorias do arquivo em busca de uma configuração específica, e, ao mesmo tempo, deixa o restante como fonte de documentação e consulta de todas suas funcionalidades.
+
+#### 2.2.2. hyprland.conf ####
+Toda a configuração do `Hyprland` está presente na pasta `.config/hypr/`. Dentro dela, há dois arquivos:
+* `hyprland.conf`: arquivo principal de configuração;
+* `shortcuts.conf`: arquivo chamado pelo principal com todos os atalhos do `Hyprland`;
+
+No arquivo `hyprland.conf` tem algumas alterações. Tais como:
+- auto inicialização do terminal Kitty quando o Hyprland é inicializado;
+- remapear o Ctrl para o Caps Lock;
+- adicionado dois layouts para o teclado, ambos `us`, com as variações com e sem dead keys;
+- alterado a taxa de repetição das teclas (`repeat_rate`) e atraso para repetição (`repeat_delay`);
+- alterado os espaçamentos dos aplicativos (`gaps_in` e `gaps_out`);
+
+Todas as teclas de atalhos usando a tecla `SUPER` estão no arquivo `shortcuts.conf`. Se inspecionar, verá todos as teclas de atalhos configuradas. Ele está comentado para facilitar o entendimento.
 
