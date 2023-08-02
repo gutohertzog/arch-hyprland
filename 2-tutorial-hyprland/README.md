@@ -35,12 +35,12 @@ Diversos arquivos de configuração serão alterados. Todos eles estão na pasta
 git clone https://github.com/gutohertzog/arch-hyprland
 ```
 
-Isso deve criar uma pasta chamada `arch-hyprland` no seu diretório raiz do usuário.
+Isso deve criar uma pasta chamada `arch-hyprland` no seu diretório raiz do usuário (`~`).
 
 ### 1.4. Configurando a Fonte ###
-Para diversos programas e ferramentas, será usada uma fonte baixada da internet. Outra disponível além das que são instaladas com o Arch Linux. A fonte usada será a CaskaydiaCove Nerd Font. Ela está disponível para ser baixada no site [Nerd Fonts](https://www.nerdfonts.com) e também no [GitHub](https://github.com/ryanoasis/nerd-fonts/releases/).
+Para diversos programas e ferramentas, será usada uma fonte baixada da internet. A fonte usada será a CaskaydiaCove Nerd Font, uma variação da Cascadia Code da Microsoft, mas com suporte a ícones. Ela está disponível para ser baixada no site [Nerd Fonts](https://www.nerdfonts.com) e também no [GitHub](https://github.com/ryanoasis/nerd-fonts/releases/).
 
-Para deixar este repositório mais leve, a fonte será baixada da internet durante a instalação. Para isso, é necessário instalar o pacote [curl](https://wiki.archlinux.org/title/CURL).
+Para deixar este repositório mais leve, a fonte será baixada do GitHub durante a instalação. Para isso, é necessário instalar o pacote [curl](https://wiki.archlinux.org/title/CURL).
 ```shell
 pacman -S curl
 ```
@@ -50,9 +50,9 @@ Depois de instalado, baixe a fonte usando o comando:
 curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.tar.xz
 ```
 
-Antes de descompactar, crie a pasta destino para as fontes que serão armazenadas. A pasta ficará dentro de `/usr/share/fonts/` com o nome da própria fonte. Aqui se chamará `caskaydiacove-nerd-font`.
+Antes de descompactar, é preciso criar as pastas onde a fonte será armazenada. A primeira pasta ficará dentro de `/urs/share/` com o nome de `fonts`. A segunda, ficará dentro de `/usr/share/fonts/` com o nome da própria fonte, que aqui se chamará `caskaydiacove-nerd-font`.
 ```shell
-mkdir /usr/share/fonts/caskaydiacove-nerd-font
+mkdir -p /usr/share/fonts/caskaydiacove-nerd-font/
 ```
 
 Descompacte o arquivo `tar.xz` com o comando abaixo, para que todos os arquivos internos sejam copiados para a pasta criada anteriomente:
@@ -63,11 +63,6 @@ tar -xvf CascadiaCode.tar.xz -C /usr/share/fonts/caskaydiacove-nerd-font
 Depois de descompactado, o arquivo `tar.xz` pode ser apagado:
 ```shell
 rm CascadiaCode.tar.xz
-```
-
-Para que a fonte seja reconhecida no sistema operacional, execute o comando [fc-cache](https://wiki.archlinux.org/title/fonts):
-```shell
-fc-cache -f -v
 ```
 
 `PS`.: Todos os programas que tiverem suas fontes alteradas serão marcados, para que possam ser alterados para outra fonte de preferência de quem estiver instalando.
@@ -96,9 +91,11 @@ cp -r ~/arch-hyprland/dotfiles/.vim ~/
 cp ~/arch-hyprland/dotfiles/.vimrc ~/
 ```
 
-Isso irá copiar o arquivo `.vimrc` e a pasta `.vim` para a pasta raiz do usuário. Ambos são usados para configurar e deixar o Vim com um visual mais amigável. Após a cópia, execute o Vim e o comando `:PlugInstall`. Isso instalará todos os plugins configurados no arquivo `~/.vim/plugins.vim`. Na próxima execução, ele estará com seus plugins funcionais.
+Isso irá copiar o arquivo `.vimrc` e a pasta `.vim` para a pasta raiz do usuário. Ambos são usados para configurar e deixar o Vim com um visual mais amigável. Após a cópia, execute o Vim (não se preocupe com as mensagens de erro, elas irão desaparecer na próxima execução) e usando o modo de comando, execute o comando `:PlugInstall`. Isso instalará todos os plugins configurados no arquivo `~/.vim/plugins.vim`. Na próxima execução, ele estará com seus plugins funcionais e sem erros.
 
 Se quiser alterar a fonte do Vim, altere a variável `guifont` no arquivo `~/.vim/options.vim`.
+
+`PS`.: mesmo que o visual do bash ou do Vim esteja entranhos, eles ficarão melhores quando usar o emulador de terminal Kitty.
 
 - - - -
 ## 2. Hyprland e Kitty ##
@@ -139,4 +136,14 @@ No arquivo `hyprland.conf` tem algumas alterações. Tais como:
 - alterado os espaçamentos dos aplicativos (`gaps_in` e `gaps_out`);
 
 Todas as teclas de atalhos usando a tecla `SUPER` estão no arquivo `shortcuts.conf`. Se inspecionar, verá todos as teclas de atalhos configuradas. Ele está comentado para facilitar o entendimento.
+
+### 2.3. Executando ###
+Agora já é possível executar o Hyprland. Para isso, execute o comando no shell:
+```shell
+Hyprland
+```
+
+Se os arquivos de configuração foram copiados corretamente, assim que a interface do `Hyprland` for executada, automaticamente inicializará uma janela do `Kitty`.
+
+Parabéns. Já tens o básico funcional. A partir de agora, todos os próximos comandos e configurações serão feitas a partir da interface do `Hyprland` e o terminal `Kitty`.
 
