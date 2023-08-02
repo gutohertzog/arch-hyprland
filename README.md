@@ -30,6 +30,13 @@ Esse script, quando executado, instalará todos os pacotes e copiará todos os a
 
 ## Histórico de Atualizações ##
 <details>
+    <summary>v1.0.0: Instalador</summary>
+
+* instalador pronto;
+* primeira parte do projeto pronto;
+* ainda falta preparar as demais partes como tela de login, wallpaper etc;
+</details>
+<details>
     <summary>v0.1.3: README ajuste</summary>
 
 * ajuste no README;
