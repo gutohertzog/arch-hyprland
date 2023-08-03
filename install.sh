@@ -13,55 +13,55 @@ function autor(){
 }
 
 function instala_basico() {
-    print '\nCriando .config................'
+    printf '\nCriando .config................'
     mkdir ~/.config
-    print $OK
+    printf $OK
 
-    print '\nConfigurando Pacman............'
+    printf '\nConfigurando Pacman............'
     sudo bash -c 'echo "ILoveCandy" >> /etc/pacman.conf'
-    print $OK
+    printf $OK
 
-    print '\nInstalando Vim.................'
+    printf '\nInstalando Vim.................'
     sudo pacman -S vim
     cp -r ./dotfiles/.vim ~/
     cp .dotfiles/.vimrc ~/
-    print $OK
+    printf $OK
 
-    print '\nInstalando Neofetch............'
+    printf '\nInstalando Neofetch............'
     sudo pacman -S neofetch
     cp -r ./dotfiles/.config/neofetch
-    print $OK
+    printf $OK
 
-    print '\nInstalando cURL................'
+    printf '\nInstalando cURL................'
     sudo pacman -S curl
-    print $OK
+    printf $OK
 
-    print '\nConfigurando Fonte.............'
+    printf '\nConfigurando Fonte.............'
     curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.tar.xz
     sudo mkdir -p /usr/share/fonts/caskaydiacove-nerd-font > /dev/null 2>&1
     sudo tar -xvf CascadiaCode.tar.xz -C /usr/share/fonts/caskaydiacove-nerd-font
     rm CascadiaCode.tar.xz
-    print $OK
+    printf $OK
     
-    print '\nCopiando .bashrc...............'
+    printf '\nCopiando .bashrc...............'
     cp ./dotfiles/.bashrc ~/
-    print $OK
+    printf $OK
 }
 
 function instala_hyprland() {
-    print '\nInstalando Hyprland............'
+    printf '\nInstalando Hyprland............'
     sudo pacman -S hyprland
     cp -r ./dotfiles/.config/hypr
-    print $OK
+    printf $OK
 
-    print '\nInstalando Kitty...............'
+    printf '\nInstalando Kitty...............'
     sudo pacman -S kitty
     cp -r ./dotfiles/.config/kitty
-    print $OK
+    printf $OK
 
-    print '\nInstalando Firefox.............'
+    printf '\nInstalando Firefox.............'
     sudo pacman -S firefox
-    print $OK
+    printf $OK
 }
 
 function inicializador() {
@@ -73,9 +73,9 @@ function inicializador() {
 }
 
 function atualiza_sistema(){
-    print '\nAtualizando Sistema............'
+    printf '\nAtualizando Sistema............'
     sudo pacman -Suy
-    print $OK
+    printf $OK
 }
 
 # inicializa o script
