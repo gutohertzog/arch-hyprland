@@ -46,7 +46,7 @@ Abaixo há uma tabela com todos os principais aplicativos. Mais serão adicionad
 - - - -
 ## Histórico de Atualizações ##
 <details>
-    <summary>v.1.0.1</summary>
+    <summary>v.1.1.0: tutorial 3 e ajustes</summary>
 
     * adicionado tabela de conteúdo do script;
     * ajustado o tutorial 3 com os detalhes que faltavam;
