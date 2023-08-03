@@ -145,5 +145,5 @@ Hyprland
 
 Se os arquivos de configuração foram copiados corretamente, assim que a interface do `Hyprland` for executada, automaticamente inicializará uma janela do `Kitty`.
 
-Parabéns. Já tens o básico funcional. A partir de agora, todos os próximos comandos e configurações serão feitas a partir da interface do `Hyprland` e o terminal `Kitty`.
+Parabéns. Já tens o básico funcional. A partir de agora, todos os próximos comandos e configurações serão feitos a partir da interface do `Hyprland` e o terminal `Kitty`.
 
