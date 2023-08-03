@@ -46,6 +46,11 @@ Abaixo há uma tabela com todos os principais aplicativos. Mais serão adicionad
 - - - -
 ## Histórico de Atualizações ##
 <details>
+<summary>v.1.1.1: arrumando instalador</summary>
+
+* arrumando diversos problemas do install.sh;
+</details>
+<details>
     <summary>v.1.1.0: tutorial 3 e ajustes</summary>
 
     * adicionado tabela de conteúdo do script;
