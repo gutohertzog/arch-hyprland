@@ -46,11 +46,11 @@ Abaixo há uma tabela com todos os principais aplicativos. Mais serão adicionad
 - - - -
 ## Histórico de Atualizações ##
 <details>
-<summary>v.1.1.3: instalador ok</summary>
+<summary>v.1.2.0: instalador ok</summary>
 
 * corrigido um problema na instalação do Vim;
 * troca das aspas simples para duplas;
-* ajustes gerais na exibição;
+* ajustes gerais na exibição durante instalação;
 </details>
 <details>
 <summary>v.1.1.2: ajustes finais instalador</summary>
