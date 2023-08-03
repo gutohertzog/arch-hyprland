@@ -29,7 +29,7 @@ function instala_basico() {
 
     printf '\nInstalando Neofetch............'
     sudo pacman -S --noconfirm neofetch > /dev/null 2>&1
-    cp -r ~/arch-hyprland/dotfiles/.config/neofetch
+    cp -r ~/arch-hyprland/dotfiles/.config/neofetch ~/.config/
     printf $OK
 
     printf '\nInstalando cURL................'
@@ -51,15 +51,15 @@ function instala_basico() {
 function instala_hyprland() {
     printf '\nInstalando Hyprland............'
     sudo pacman -S --noconfirm hyprland > /dev/null 2>&1
-    cp -r ~/arch-hyprland/dotfiles/.config/hypr
+    cp -r ~/arch-hyprland/dotfiles/.config/hypr ~/.config/
     printf $OK
 
-    printf '\nInstalando Kitty...............\n'
+    printf '\nInstalando Kitty...............'
     sudo pacman -S --noconfirm kitty > /dev/null 2>&1
-    cp -r ~/arch-hyprland/dotfiles/.config/kitty
+    cp -r ~/arch-hyprland/dotfiles/.config/kitty ~/.config/
     printf $OK
 
-    printf '\nInstalando Firefox.............\n'
+    printf '\nInstalando Firefox.............'
     sudo pacman -S --noconfirm firefox > /dev/null 2>&1
     printf $OK
 }
@@ -67,13 +67,14 @@ function instala_hyprland() {
 function inicializador() {
     printf '\nInicializando o Hyprland em:\n'
     for i in 3 2 1; do
-        printf '$i ...'
+        printf '    $i ...\n'
+        sleep 1
     done
     Hyprland
 }
 
 function atualiza_sistema(){
-    printf '\nAtualizando Sistema............\n'
+    printf '\nAtualizando Sistema............'
     sudo pacman -Suy --noconfirm > /dev/null 2>&1
     printf $OK
 }
