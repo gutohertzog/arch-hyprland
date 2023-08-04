@@ -147,3 +147,33 @@ Se os arquivos de configuração foram copiados corretamente, assim que a interf
 
 Parabéns. Já tens o básico funcional. A partir de agora, todos os próximos comandos e configurações serão feitos a partir da interface do `Hyprland` e o terminal `Kitty`.
 
+- - - -
+## 3. Login ##
+Agora é hora de configurar a tela de login, para não precisar realizar isso pelo terminal.
+
+### 3.1. Instalando ###
+O pacote usado será o [SDDM](https://github.com/sddm/sddm).
+```shell
+pacman -S sddm
+```
+
+Após a instalação, é preciso ativá-lo para ser usado como tela de login.
+```shell
+systemctl enable sddm
+```
+
+Se realizar a reinicialização agora, já terá uma tela de login padrão do SDDM. Não é a mais bela de todas, mas é funcional.
+
+### 3.2. Configurando ###
+antes de testar abaixo, testar o catppuccin/sddm, onde aparentemente não depende do pesado qt5
+baixar o sddm-sugar-candy do kangie (github)
+ver arquivos de configuração /etc/sddm.conf, /usr/share/sddm/sugar-candy/*
+adicionar o vim ao sudoedit `export EDITOR=vim`
+
+
+## adicionando hyprpaper ##
+sudo pacman -S hyprpaper
+
+## adicionando explorer ##
+sudo pacman -S thunar thunar-volman gvfs
+

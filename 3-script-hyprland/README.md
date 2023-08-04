@@ -31,5 +31,9 @@ Agora, tudo o que precisa fazer é executar o script.
 ./install.sh
 ```
 
-E desfrutar o sistema.
+Após a finalização do script, ainda há duas coisas para fazer:
+- abrir o Vim e executar o comando `PlugInstall`;
+- adicionar `ILoveCandy` no arquivo `/etc/pacman.conf` em `Misc options`;
+
+Apreveite o sistema =D
 

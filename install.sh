@@ -82,7 +82,7 @@ if [ $(whoami) != "root" ]; then
     atualiza_sistema
     instala_basico
     instala_hyprland
-    printf "\nInstalação Finalizada\n"
+    printf "\n\nInstalação Finalizada\n"
     inicializador
 else
     printf "\n\nErro, o script não deve ser executado como root.\n\n"

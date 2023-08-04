@@ -46,6 +46,13 @@ Abaixo há uma tabela com todos os principais aplicativos. Mais serão adicionad
 - - - -
 ## Histórico de Atualizações ##
 <details>
+<summary>v.1.2.1: ajustes e login</summary>
+
+* criação da tela de login e início da personalização;
+* ajustes nos textos gerais;
+* movimentos do mouse para reajustar janelas no Hyprland;
+</details>
+<details>
 <summary>v.1.2.0: instalador ok</summary>
 
 * corrigido um problema na instalação do Vim;
@@ -76,6 +83,9 @@ Abaixo há uma tabela com todos os principais aplicativos. Mais serão adicionad
 * primeira parte do projeto pronto;
 * ainda falta preparar as demais partes como tela de login, wallpaper etc;
 </details>
+
+<details>
+<summary>v0</summary>
 <details>
 <summary>v0.1.3: README ajuste</summary>
 
@@ -113,5 +123,6 @@ Abaixo há uma tabela com todos os principais aplicativos. Mais serão adicionad
 
 * criação dos READMEs e das pastas;
 * criação do repositório;
+</details>
 </details>
 
