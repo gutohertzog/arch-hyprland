@@ -51,7 +51,7 @@ function instala_hyprland() {
     cp -r $1/dotfiles/.config/hypr "$HOME/.config/"
     printf $OK
 
-    printf "\nInstalando SDDM................"
+    printf "\nInstalando SDDM................\n"
     sudo pacman -S --noconfirm sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 > /dev/null 2>&1
     systemctl enable sddm > /dev/null 2>&1
     sudo cp -r $1/dotfiles/sddm/themes/* /usr/share/sddm/themes/
@@ -78,8 +78,11 @@ function instala_hyprland() {
 function inicializador() {
     printf "\n\nInicializando o Hyprland em:\n"
     for i in 5 4 3 2 1; do
-        printf "$i...."
-        sleep 1
+        printf "$i"
+        for j in 4 3 2 1; do
+            printf "."
+            sleep 0.25
+        done
     done
     Hyprland
 }
