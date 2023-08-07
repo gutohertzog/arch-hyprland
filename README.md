@@ -34,95 +34,12 @@ Abaixo há uma tabela com todos os principais aplicativos. Mais serão adicionad
 
 |        Etiqueta       |        Aplicação        |
 | :-------------------: | :---------------------: |
-|  Sistema Operacional  |        Arch Linux       |
-| Gerenciador de Janela |         Hyprland        |
-|        Terminal       |           Kitty         |
-|     Navegador Web     |          Firefox        |
+|  Sistema Operacional  |       Arch Linux        |
+| Gerenciador de Janela |        Hyprland         |
+|        Terminal       |          Kitty          |
+|     Navegador Web     |         Firefox         |
 |         Fontes        | CaskaydiaCove Nerd Font |
-|       Programas       |            Git          |
-|                       |            Vim          |
-|                       |          Neofetch       |
-
-- - - -
-## Histórico de Atualizações ##
-<details>
-<summary>v.1.2.1: ajustes e login</summary>
-
-* criação da tela de login e início da personalização;
-* ajustes nos textos gerais;
-* movimentos do mouse para reajustar janelas no Hyprland;
-</details>
-<details>
-<summary>v.1.2.0: instalador ok</summary>
-
-* corrigido um problema na instalação do Vim;
-* troca das aspas simples para duplas;
-* ajustes gerais na exibição durante instalação;
-</details>
-<details>
-<summary>v.1.1.2: ajustes finais instalador</summary>
-
-* refinando instalador;
-</details>
-<details>
-<summary>v.1.1.1: arrumando instalador</summary>
-
-* arrumando diversos problemas do install.sh;
-</details>
-<details>
-<summary>v.1.1.0: tutorial 3 e ajustes</summary>
-
-* adicionado tabela de conteúdo do script;
-* ajustado o tutorial 3 com os detalhes que faltavam;
-* mais comentários nos arquivos do Vim;
-</details>
-<details>
-<summary>v1.0.0: Instalador</summary>
-
-* instalador pronto;
-* primeira parte do projeto pronto;
-* ainda falta preparar as demais partes como tela de login, wallpaper etc;
-</details>
-
-<details>
-<summary>v0</summary>
-<details>
-<summary>v0.1.3: README ajuste</summary>
-
-* ajuste no README;
-</details>
-<details>
-<summary>v0.1.2: tutorial 2 & fonte removida</summary>
-
-* ajustes no Tutorial 2;
-* organização das pastas no `dotfiles`;
-* removida a pasta `Fontes` para deixar o repositório mais leve;
-    * a fonte agora é baixada diretamente;
-* ajustes de links e descrições no Tutorial 1;
-</details>
-<details>
-<summary>v0.1.1: arquivos e fontes</summary>
-
-* adicionando arquivos de configuracao para:
-    * hyprland
-    * kitty
-    * bashrc
-    * neofetch
-    * vim
-* adicionando os arquivos `ttf` do CaskaydiaCove Nerd Font;
-</details>
-<details>
-<summary>v0.1.0: archinstall</summary>
-
-* início do Tutorial 2;
-* finalização do Tutorial 1 usando o archinstall;
-* ajustes no README inicial;
-</details>
-<details>
-<summary>v0.0.1: criação</summary>
-
-* criação dos READMEs e das pastas;
-* criação do repositório;
-</details>
-</details>
+|       Programas       |           Git           |
+|                       |           Vim           |
+|                       |         Neofetch        |
 

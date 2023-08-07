@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# variável global
+# variável global OK em verde
 OK="\e[0;32mOK\e[0m"
 
 function autor(){
@@ -14,18 +14,19 @@ function autor(){
 
 function instala_basico() {
     printf "\n\nCriando .config................"
-    mkdir ~/.config
+    mkdir "$HOME/.config" > /dev/null 2>&1
     printf $OK
 
     printf "\nInstalando Vim................."
     sudo pacman -S --noconfirm vim > /dev/null 2>&1
-    cp -r ~/arch-hyprland/dotfiles/.vim ~/
-    cp ~/arch-hyprland/dotfiles/.vimrc ~/
+    sudo pacman -S --noconfirm fzf > /dev/null 2>&1
+    cp -r $1/dotfiles/.vim "$HOME/"
+    cp $1/dotfiles/.vimrc "$HOME/"
     printf $OK
 
     printf "\nInstalando Neofetch............"
     sudo pacman -S --noconfirm neofetch > /dev/null 2>&1
-    cp -r ~/arch-hyprland/dotfiles/.config/neofetch ~/.config/
+    cp -r $1/dotfiles/.config/neofetch "$HOME/config/"
     printf $OK
 
     printf "\nInstalando cURL................"
@@ -40,19 +41,33 @@ function instala_basico() {
     printf $OK
     
     printf "\nCopiando .bashrc..............."
-    cp ~/arch-hyprland/dotfiles/.bashrc ~/
+    cp $1/dotfiles/.bashrc "$HOME/"
     printf $OK
 }
 
 function instala_hyprland() {
     printf "\n\nInstalando Hyprland............"
     sudo pacman -S --noconfirm hyprland > /dev/null 2>&1
-    cp -r ~/arch-hyprland/dotfiles/.config/hypr ~/.config/
+    cp -r $1/dotfiles/.config/hypr "$HOME/config/"
+    printf $OK
+
+    printf "\nInstalando SDDM................"
+    sudo pacman -S --noconfirm sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 > /dev/null 2>&1
+    systemctl enable sddm > /dev/null 2>&1
+    sudo cp -r $1/dotfiles/sddm/themes/* /usr/share/sddm/themes/
+    sudo cp $1/dotfiles/sddm/sddm.conf /etc/
+    printf $OK
+
+    printf "\nInstalando Hyprpaper..........."
+    sudo pacman -S --noconfirm hyprpaper > /dev/null 2>&1
+    mkdir -p "$HOME/Images/wallpapers"
+    cp $1/dotfiles/hypr/hyprpaper.conf "$HOME/config/hypr/"
+    cp $1/dotfiles/Images/wallpapers/*
     printf $OK
 
     printf "\nInstalando Kitty..............."
     sudo pacman -S --noconfirm kitty > /dev/null 2>&1
-    cp -r ~/arch-hyprland/dotfiles/.config/kitty ~/.config/
+    cp -r $1/dotfiles/.config/kitty "$HOME/config/"
     printf $OK
 
     printf "\nInstalando Firefox............."
@@ -63,7 +78,7 @@ function instala_hyprland() {
 function inicializador() {
     printf "\n\nInicializando o Hyprland em:\n"
     for i in 3 2 1; do
-        printf "    $i ...\n"
+        printf "$i...."
         sleep 1
     done
     Hyprland
@@ -77,11 +92,12 @@ function atualiza_sistema(){
 
 # inicializa o script
 if [ $(whoami) != "root" ]; then
+    rota=$(pwd)
     autor
     printf "\nInstalação Iniciada\n"
     atualiza_sistema
-    instala_basico
-    instala_hyprland
+    instala_basico "$rota"
+    instala_hyprland "$rota"
     printf "\n\nInstalação Finalizada\n"
     inicializador
 else

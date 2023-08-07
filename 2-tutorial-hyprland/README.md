@@ -21,15 +21,7 @@ São eles:
 pacman -S vim git neofetch
 ```
 
-### 1.2. Configurando o Pacman ###
-Agora que já podemos editar arquivos com Vim, é necessário adicionar uma configuração ***`importantíssima`*** no arquivo de configuração do [`pacman`](https://wiki.archlinux.org/title/pacman).
-
-Acesse o arquivo usando o comando abaixo e adicione `ILoveCandy` no tópico `Misc options`:
-```shell
-vim /etc/pacman.conf
-```
-
-### 1.3. Baixando o Repositório ###
+### 1.2. Baixando o Repositório ###
 Diversos arquivos de configuração serão alterados. Todos eles estão na pasta `dotfiles` deste repositório. Então, a próxima etapa é cloná-lo para sua nova instalação. Para isso, execute o comando abaixo:
 ```shell
 git clone https://github.com/gutohertzog/arch-hyprland
@@ -37,7 +29,7 @@ git clone https://github.com/gutohertzog/arch-hyprland
 
 Isso deve criar uma pasta chamada `arch-hyprland` no seu diretório raiz do usuário (`~`).
 
-### 1.4. Configurando a Fonte ###
+### 1.3. Configurando a Fonte ###
 Para diversos programas e ferramentas, será usada uma fonte baixada da internet. A fonte usada será a CaskaydiaCove Nerd Font, uma variação da Cascadia Code da Microsoft, mas com suporte a ícones. Ela está disponível para ser baixada no site [Nerd Fonts](https://www.nerdfonts.com) e também no [GitHub](https://github.com/ryanoasis/nerd-fonts/releases/).
 
 Para deixar este repositório mais leve, a fonte será baixada do GitHub durante a instalação. Para isso, é necessário instalar o pacote [curl](https://wiki.archlinux.org/title/CURL).
@@ -67,7 +59,7 @@ rm CascadiaCode.tar.xz
 
 `PS`.: Todos os programas que tiverem suas fontes alteradas serão marcados, para que possam ser alterados para outra fonte de preferência de quem estiver instalando.
 
-### 1.5. Configurando o Bash ###
+### 1.4. Configurando o Bash ###
 O [bash](https://wiki.archlinux.org/title/bash) é um shell de linha de comando. Ele pode ser configurado através do arquivo `.bashrc`, normalmente localizado no diretório raiz do usuário (o `~`).
 
 Para configurá-lo, copie o arquivo `.bashrc` do repositório para o `~`. Ele está com uma personalização para o shell e também alguns comandos de atalhos.
@@ -82,7 +74,7 @@ Após copiado, recarregue o bash usando o comando source:
 source .bashrc
 ```
 
-### 1.6. Configurando o Vim ###
+### 1.5. Configurando o Vim ###
 O [Vim](https://www.freecodecamp.org/news/vim-beginners-guide/) será o programa usado para realizar as edições necessárias nos arquivos.
 
 Na pasta `arch-hyprland/dotfiles/` há um arquivo `.vimrc` e uma pasta `.vim` e eles já estão configurados. Para usá-los, basta copiá-los para a pasta raiz do usuário.
@@ -152,7 +144,7 @@ Parabéns. Já tens o básico funcional. A partir de agora, todos os próximos c
 Agora é hora de configurar a tela de login, para não precisar realizar isso pelo terminal.
 
 ### 3.1. Instalando ###
-O pacote usado será o [SDDM](https://github.com/sddm/sddm).
+Para isso, será usado o Simple Desktop Display Manager, [SDDM](https://wiki.archlinux.org/title/SDDM).
 ```shell
 pacman -S sddm
 ```
@@ -162,18 +154,41 @@ Após a instalação, é preciso ativá-lo para ser usado como tela de login.
 systemctl enable sddm
 ```
 
-Se realizar a reinicialização agora, já terá uma tela de login padrão do SDDM. Não é a mais bela de todas, mas é funcional.
+Agora, se realizar a reinicialização, já terá uma tela de login padrão do SDDM. Não é a mais bela de todas, mas é funcional.
 
 ### 3.2. Configurando ###
-antes de testar abaixo, testar o catppuccin/sddm, onde aparentemente não depende do pesado qt5
-baixar o sddm-sugar-candy do kangie (github)
-ver arquivos de configuração /etc/sddm.conf, /usr/share/sddm/sugar-candy/*
-adicionar o vim ao sudoedit `export EDITOR=vim`
+Para deixar o layout mais interessante, vai ser usado uma variação da interface do [Catppuccin](https://github.com/catppuccin/sddm), um dos [forks](https://github.com/isabelroses/sddm) do projeto.
 
+Para isso, é necessário instalar alguns pacotes para ele funcionar corretamente.
+```shell
+pacman -S qt5-graphicaleffects qt5-svg qt5-quickcontrols2
+```
 
-## adicionando hyprpaper ##
-sudo pacman -S hyprpaper
+Agora, basta copiar os arquivos para suas respectivas pastas:
+```shell
+cp -r ~/arch-hyprland/dotfiles/sddm/themes/* /usr/share/sddm/themes/
+cp ~/arch-hyprland/dotfiles/sddm/sddm.conf /etc/
+```
+
+Agora, a tela de login já está configurada. Se quiser alterar para algum outro tema do Catppuccin, abra o arquivo `/etc/sddm.conf`, ir no `Theme` e alterar o `Current`.
+
+- - - -
+## 4. Wallpaper ##
+Felizmente, o papel de parede da área de trabalho é muito simples de configurar.
+
+Para isso, instale o pacote [`Hyprpaper`](https://github.com/hyprwm/hyprpaper):
+```shell
+pacman -S hyprpaper
+```
+
+Depois, copie o arquivo de configuração:
+```shell
+cp ~/arch-hyprland/dotfiles/hypr/hyprpaper.conf ~/.config/hypr/
+```
+
+Para alterar, basta alterar o arquivo chamado em `~/.config/hypr/hyprpaper.conf`.
 
 ## adicionando explorer ##
+O thunar parece ter funcionado MUITO melhor que o dolphin, já que exigiu quase nada de extra
 sudo pacman -S thunar thunar-volman gvfs
 

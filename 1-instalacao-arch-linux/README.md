@@ -11,6 +11,8 @@ O download poderá ser feito de diversas formas:
 * usando o link da ISO por torrent;
 * usando um dos links dos mirrors disponíveis (preferência para os Brasileiros);
 
+Use a forma que melhor lhe conver.
+
 - - - -
 ## 2. Preparando o Pen Drive ##
 Uma vez baixada a ISO, tem que ser criado um pen drive de instalação.
@@ -82,54 +84,80 @@ Siga os passos abaixo:
     ```
 - para testar a conexão, realize um [`ping`](https://phoenixnap.com/kb/linux-ping-command-examples):
     ```shell
-    ping www.archlinux.org
+    ping -c 3 www.archlinux.org
     ```
 - caso não esteja conseguindo de conectar à internet, realize os passos acima novamente;
 - se persistir, busque por uma solução na internet ou abra um [problema](https://docs.github.com/pt/issues/tracking-your-work-with-issues/quickstart) no projeto que ajudarei dentro do possível;
 
-### 3.3. Instalação ###
+### 3.3. Pacman ###
+
+Antes de inicializar a instalação, aproveite o uso do terminal como [sudo](https://wiki.archlinux.org/title/sudo) e vamos deixar o terminal mais interessante.
+
+Usando o Vim da imagem, acesso o arquivo de configuração do [`pacman`](https://wiki.archlinux.org/title/pacman).
+```shell
+vim /etc/pacman.conf
+```
+
+No tópico `Misc options`, descomente (apague a `#`) do `Color` e adicione ao final da lista `ILoveCandy`. Vai ficar mais ou menos assim:
+```
+# Misc options
+#UseSyslog
+Color
+#NoProgressBar
+CheckSpace
+#VerbosePkgLists
+#ParallelDownloads = 5
+ILoveCandy
+```
+Durante a instalação, esse arquivo será copiado para mesma pasta, portanto, esses ajustes serão persistidos pós-instalação.
+
+### 3.4. Instalação ###
 Uma vez que a conexão com a internet está efetuada, pode-se iniciar a instalação efetiva do Arch Linux.
 
 Digite o comando [`archinstall`](https://archinstall.readthedocs.io/installing/guided.html) e, dessa forma, iniciar a instalação. Isso irá abrir uma lista com diversas opções.
 
-Abaixo, há uma lista com todas as configurações usadas.
-Os campos que estiverem destacados são para serem usados com as referidas configurações. Já os demais, são de configuração sugerida, mas que podem ser alterados de acordo com a preferência de quem estiver instalando.
+Abaixo, há uma tabela com todas as configurações usadas.
+Os campos que estiverem destacados devem ser usados com as referidas configurações. Os demais, são de configuração sugerida, mas podem ser alterados de acordo com a preferência de quem estiver instalando.
 
 Pode-se navegar usando as `setas` do teclado ou então as teclas `hjkl`.
-- Archinstall language: English
-- Keyboard layout: us
-- Mirror region: Brazil
-- Locale language: en_US
-- Locale encoding: utf-8
-- Drives: /dev/sda
-- Disk layout:
-    - wipe all
-    - filesystem btrfs
-    - BTRFS subvolumes yes
-    - BTRFS compression no
-- Disk encryption: vazio
-- Bootloader: systemd-bootctl
-- Swap: True
-- Hostname: archlinux
-- Root password: None
-- User account: crie um usuário com permisão de sudo, confirme e saia
-- Profile: ***`minimal`***
-- Audio: No audio server
-- Kernels: `linux`
-- Additional packages: []
-- Network configuration: `Use NetworkManager`
-- Timezone: America/Sao_Paulo
-- Automatic time sync: True
-- Optional repositories: `multilib`
+
+| Legenda | Opção | Adicional |
+|:--------:|:---------:|:---------:|
+| Archinstall language | English (100%) | |
+| Mirror | Mirror region | Brazil |
+| Locales | Keyboard layout | us |
+| | Locale language | en_US |
+| | Locale encoding | UTF-8 |
+| Disk configuration | Use a best-effot default partition layout | |
+| | Select Device | /dev/sda ou /dev/nvme0n1 |
+| | Filesystem | btrfs |
+| | Subvolumes | yes |
+| | Compression | no |
+| Disk encryption | | |
+| Bootloader | Systemd-boot | |
+| Swap | True | |
+| Hostname | archlinux | |
+| Boot password | | |
+| User account | Add a user | Digite usuário e senha |
+| | Sudo | yes |
+| | Confirm and exit | |
+| Profile | Profile | ***`minimal`*** |
+| Audio | `Pipewire` | |
+| Kernels | `linux` | |
+| Additional packages | | |
+| Network configuration | `Use NetworkManager` | |
+| Timezone | America/Sao_Paulo | |
+| Automatic time sync | True | |
+| Optional repositories | `multilib` | |
 
 Depois de escolhida as configurações, inicie a instalação no `Install`.
 
 Ao final, será questionado se quer realizar uma configuração pós-instalação, pressione `ESC` ou escolha a opção `no`. Reinicie o computador usando o comando:
 ```shell
-rebot
+reboot
 ```
 
-### 3.4. Conectando ###
+### 3.5. Conectando ###
 A conexão com a internet usada anteriormente foi configurada apenas para a instalação.
 
 Agora, é preciso se conectar novamente, mas agora usando o [nmcli](https://wiki.archlinux.org/title/NetworkManager#Usage). Dessa forma, a conexão será persistida entre os reboots. Esse pacote foi instalado quando a opção `Use NetworkManager` foi selecionada na lista do `archinstall`.
