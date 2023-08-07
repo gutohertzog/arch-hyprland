@@ -1,5 +1,11 @@
 # LOG DE ALTERAÇÕES #
 
+## v.1.3.1 ##
+* `install.sh`:
+    * removida a criação da pasta `.config`;
+    * corrigidos os erros das chamadas da pasta `.config` como `config`;
+    * corrigida a falta do segundo parametro na copia do wallpaper;
+
 ## v.1.3.0 ##
 * adicionado o arquivo `ATALHOS.md` que terá as tabelas com os atalhos;
 * adicionado o arquivo `CHANGELOG.md` que conterá o histórico das atualizações do projeto;

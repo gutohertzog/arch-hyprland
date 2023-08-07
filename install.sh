@@ -13,9 +13,9 @@ function autor(){
 }
 
 function instala_basico() {
-    printf "\n\nCriando .config................"
-    mkdir "$HOME/.config" > /dev/null 2>&1
-    printf $OK
+    #printf "\n\nCriando .config................"
+    #mkdir "$HOME/.config" > /dev/null 2>&1
+    #printf $OK
 
     printf "\nInstalando Vim................."
     sudo pacman -S --noconfirm vim > /dev/null 2>&1
@@ -26,7 +26,7 @@ function instala_basico() {
 
     printf "\nInstalando Neofetch............"
     sudo pacman -S --noconfirm neofetch > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/neofetch "$HOME/config/"
+    cp -r $1/dotfiles/.config/neofetch "$HOME/.config/"
     printf $OK
 
     printf "\nInstalando cURL................"
@@ -48,7 +48,7 @@ function instala_basico() {
 function instala_hyprland() {
     printf "\n\nInstalando Hyprland............"
     sudo pacman -S --noconfirm hyprland > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/hypr "$HOME/config/"
+    cp -r $1/dotfiles/.config/hypr "$HOME/.config/"
     printf $OK
 
     printf "\nInstalando SDDM................"
@@ -61,13 +61,13 @@ function instala_hyprland() {
     printf "\nInstalando Hyprpaper..........."
     sudo pacman -S --noconfirm hyprpaper > /dev/null 2>&1
     mkdir -p "$HOME/Images/wallpapers"
-    cp $1/dotfiles/hypr/hyprpaper.conf "$HOME/config/hypr/"
-    cp $1/dotfiles/Images/wallpapers/*
+    cp $1/dotfiles/hypr/hyprpaper.conf "$HOME/.config/hypr/"
+    cp $1/dotfiles/Images/wallpapers/* "$HOME/Images/wallpapers"
     printf $OK
 
     printf "\nInstalando Kitty..............."
     sudo pacman -S --noconfirm kitty > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/kitty "$HOME/config/"
+    cp -r $1/dotfiles/.config/kitty "$HOME/.config/"
     printf $OK
 
     printf "\nInstalando Firefox............."
@@ -77,7 +77,7 @@ function instala_hyprland() {
 
 function inicializador() {
     printf "\n\nInicializando o Hyprland em:\n"
-    for i in 3 2 1; do
+    for i in 5 4 3 2 1; do
         printf "$i...."
         sleep 1
     done
