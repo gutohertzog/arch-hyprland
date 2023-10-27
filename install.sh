@@ -20,13 +20,13 @@ function instala_basico() {
     printf "\nInstalando Vim................."
     sudo pacman -S --noconfirm vim > /dev/null 2>&1
     sudo pacman -S --noconfirm fzf > /dev/null 2>&1
-    cp -r $1/dotfiles/.vim "$HOME/"
-    cp $1/dotfiles/.vimrc "$HOME/"
+    cp -r $1/dotfiles/.vim $HOME/
+    cp $1/dotfiles/.vimrc $HOME/
     printf $OK
 
     printf "\nInstalando Neofetch............"
     sudo pacman -S --noconfirm neofetch > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/neofetch "$HOME/.config/"
+    cp -r $1/dotfiles/.config/neofetch $HOME/.config/
     printf $OK
 
     printf "\nInstalando cURL................"
@@ -41,14 +41,14 @@ function instala_basico() {
     printf $OK
     
     printf "\nCopiando .bashrc..............."
-    cp $1/dotfiles/.bashrc "$HOME/"
+    cp $1/dotfiles/.bashrc $HOME/
     printf $OK
 }
 
 function instala_hyprland() {
     printf "\n\nInstalando Hyprland............"
     sudo pacman -S --noconfirm hyprland > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/hypr "$HOME/.config/"
+    cp -r $1/dotfiles/.config/hypr $HOME/.config/
     printf $OK
 
     printf "\nInstalando SDDM................\n"
@@ -60,14 +60,13 @@ function instala_hyprland() {
 
     printf "\nInstalando Hyprpaper..........."
     sudo pacman -S --noconfirm hyprpaper > /dev/null 2>&1
-    mkdir -p "$HOME/Images/wallpapers"
-    cp $1/dotfiles/hypr/hyprpaper.conf "$HOME/.config/hypr/"
-    cp $1/dotfiles/Images/wallpapers/* "$HOME/Images/wallpapers"
+    mkdir -p $HOME/Images/wallpapers
+    cp $1/dotfiles/Images/wallpapers/* $HOME/Images/wallpapers/
     printf $OK
 
     printf "\nInstalando Kitty..............."
     sudo pacman -S --noconfirm kitty > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/kitty "$HOME/.config/"
+    cp -r $1/dotfiles/.config/kitty $HOME/.config/
     printf $OK
 
     printf "\nInstalando Firefox............."
@@ -99,8 +98,8 @@ if [ $(whoami) != "root" ]; then
     autor
     printf "\nInstalação Iniciada\n"
     atualiza_sistema
-    instala_basico "$rota"
-    instala_hyprland "$rota"
+    instala_basico $rota
+    instala_hyprland $rota
     printf "\n\nInstalação Finalizada\n"
     inicializador
 else
