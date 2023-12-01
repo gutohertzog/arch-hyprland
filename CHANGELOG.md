@@ -1,5 +1,9 @@
 # LOG DE ALTERAÇÕES #
 
+## v.1.4.0 ##
+* Alterando para primeiro funcionar o `install.sh` e depois os tutoriais.
+* Adicionado diversas tabelas (atalhos e pacotes).
+
 ## v.1.3.1 ##
 * `install.sh`:
     * removida a criação da pasta `.config`;
@@ -88,4 +92,3 @@
 ## v0.0.1 ##
 * criação dos READMEs e das pastas;
 * criação do repositório;
-

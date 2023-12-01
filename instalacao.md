@@ -1,22 +1,13 @@
 # Instalação Arch Linux #
 
-Essa primeira parte vai contar com todo o passo a passo da instalação usando o `archinstall`.
-
 - - - -
 ## 1. Baixando ISO ##
-A primeira etapa é baixar a ISO do Arch Linux. Para isso, acesse o seguinte [link](https://archlinux.org/download/).
-
-O download poderá ser feito de diversas formas:
-* baixando o arquivo torrent;
-* usando o link da ISO por torrent;
-* usando um dos links dos mirrors disponíveis (preferência para os Brasileiros);
-
-Use a forma que melhor lhe conver.
+Primeiro é preciso baixar a ISO do Arch Linux. Para isso, acesse o seguinte [link](https://archlinux.org/download/).
 
 - - - -
 ## 2. Preparando o Pen Drive ##
-Uma vez baixada a ISO, tem que ser criado um pen drive de instalação.
-Uma das formas de fazer isso é usando o rufus.
+Uma vez baixada a ISO, é necessario criar um pen drive de instalação.
+Uma das formas de fazer isso é usando o Rufus.
 
 ### 2.1. Rufus ###
 O [Rufus](https://github.com/pbatard/rufus) é um programa usado para criar pen drives inicializáveis a partir de ISOs.
@@ -28,18 +19,14 @@ Use esse [tutorial](https://rufus.ie/en/) para criar o pen drive inicializável 
 
 - - - -
 ## 3. Instalando o Arch Linux ##
-Em um computador/notebook desligado, coloque o pen drive e inicialize o computador a partir dele.
-Consulte seu fabricante para saber como realizar essa operação.
 
 ### 3.1. Conectando à Internet ###
 O Arch Linux, diferente de outras distribuições Linux, é baixado durante a instalação. Então, para conseguir realizar a instalação, é necessário que a máquina esteja conectada à internet.
 
-Se ela for cabeada, a imagem de instalação do Arch Linux é capaz de identificar e realizar a conexão automaticamente e o passo da `Conexão Manual` pode ser pulado. Senão, é necessário realizar a conexão manualmente. Para isso, siga os passos abaixo.
+Se ela for cabeada, a imagem de instalação do Arch Linux é capaz de identificar e realizar a conexão automaticamente e o passo da `Conexão Manual` (abaixo) pode ser pulado. Cado contrário, siga os passos abaixo.
 
 ### 3.2. Conexão Manual ###
-A partir do terminal, diversos comandos deverão ser executados.
-
-Siga os passos abaixo:
+A partir do terminal, execute os comandos abaixo:
 - busque as opções de conexões com o comando [`rfkill`](https://wiki.archlinux.org/title/Network_configuration/Wireless#Rfkill_caveat):
     ```shell
     rfkill
@@ -98,7 +85,7 @@ Usando o Vim da imagem, acesso o arquivo de configuração do [`pacman`](https:/
 vim /etc/pacman.conf
 ```
 
-No tópico `Misc options`, descomente (apague a `#`) do `Color` e adicione ao final da lista `ILoveCandy`. Vai ficar mais ou menos assim:
+No tópico `Misc options`, descomente (apague a `#`) de `Color` (terminal colorido) e `ParallelDownloads` (permite baixar até 5 pacotes simultaneamente) e adicione ao final da lista `ILoveCandy` (surpresa). Vai ficar mais ou menos assim:
 ```
 # Misc options
 #UseSyslog
@@ -106,7 +93,7 @@ Color
 #NoProgressBar
 CheckSpace
 #VerbosePkgLists
-#ParallelDownloads = 5
+ParallelDownloads = 5
 ILoveCandy
 ```
 Durante a instalação, esse arquivo será copiado para mesma pasta, portanto, esses ajustes serão persistidos pós-instalação.
@@ -117,9 +104,11 @@ Uma vez que a conexão com a internet está efetuada, pode-se iniciar a instala�
 Digite o comando [`archinstall`](https://archinstall.readthedocs.io/installing/guided.html) e, dessa forma, iniciar a instalação. Isso irá abrir uma lista com diversas opções.
 
 Abaixo, há uma tabela com todas as configurações usadas.
-Os campos que estiverem destacados devem ser usados com as referidas configurações. Os demais, são de configuração sugerida, mas podem ser alterados de acordo com a preferência de quem estiver instalando.
+Os campos que estiverem destacados são obrigatórios. Os demais, são de configuração sugerida, mas podem ser alterados de acordo com a preferência de quem estiver instalando.
 
-Pode-se navegar usando as `setas` do teclado ou então as teclas `hjkl`.
+Em uma das atualziações do `archinstall`, foi adicinado a opção de instalar o Hyprland como interface gráfica. Então, será usado a instalação deles nesta etapa.
+
+Pode-se navegar usando as `setas` do teclado ou então as teclas `hjkl` (Vim).
 
 | Legenda | Opção | Adicional |
 |:--------:|:---------:|:---------:|
@@ -141,10 +130,13 @@ Pode-se navegar usando as `setas` do teclado ou então as teclas `hjkl`.
 | User account | Add a user | Digite usuário e senha |
 | | Sudo | yes |
 | | Confirm and exit | |
-| Profile | Profile | ***`minimal`*** |
+| Profile | Profile | ***`Desktop`*** |
+| | Profiles | `Hyprland` |
+| | Graphics driver | `All open-source` |
+| | Greeter | `sddm` |
 | Audio | `Pipewire` | |
 | Kernels | `linux` | |
-| Additional packages | | |
+| Additional packages | Info | |
 | Network configuration | `Use NetworkManager` | |
 | Timezone | America/Sao_Paulo | |
 | Automatic time sync | True | |
@@ -160,7 +152,7 @@ reboot
 ### 3.5. Conectando ###
 A conexão com a internet usada anteriormente foi configurada apenas para a instalação.
 
-Agora, é preciso se conectar novamente, mas agora usando o [nmcli](https://wiki.archlinux.org/title/NetworkManager#Usage). Dessa forma, a conexão será persistida entre os reboots. Esse pacote foi instalado quando a opção `Use NetworkManager` foi selecionada na lista do `archinstall`.
+Agora, é preciso se conectar novamente, mas agora usando o [nmcli](https://wiki.archlinux.org/title/NetworkManager#Usage). Dessa forma, a conexão será persistida entre os reboots. Esse pacote foi instalado quando a opção `Use NetworkManager` foi selecionada anteriormente.
 
 Para se conectar à internet, use o comando abaixo substituindo `<rede>` pela rede que quer conectar e `<senha>` pela senha da rede:
 ```shell
@@ -171,5 +163,4 @@ Use o comando do `ping` para testar a conexão.
 
 - - - -
 ## 4. Próximo Passo ###
-Agora que o sistema está instalado e conectado à internet, vá para a etapa da instalação manual ou automática.
-
+Agora que o sistema está instalado e conectado à internet, vá para a etapa da instalação [manual](tutorial.md) ou [automática](script.md).

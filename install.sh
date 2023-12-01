@@ -2,6 +2,7 @@
 
 # variável global OK em verde
 OK="\e[0;32mOK\e[0m"
+FONT_VERSAO="v3.1.1"
 
 function autor(){
     clear
@@ -13,69 +14,113 @@ function autor(){
 }
 
 function instala_basico() {
-    #printf "\n\nCriando .config................"
-    #mkdir "$HOME/.config" > /dev/null 2>&1
-    #printf $OK
-
-    printf "\nInstalando Vim................."
-    sudo pacman -S --noconfirm vim > /dev/null 2>&1
-    sudo pacman -S --noconfirm fzf > /dev/null 2>&1
-    cp -r $1/dotfiles/.vim $HOME/
-    cp $1/dotfiles/.vimrc $HOME/
+    printf "\n"
+    printf "\nCriando .config.................."
+    mkdir "$HOME/.config" > /dev/null 2>&1
     printf $OK
 
-    printf "\nInstalando Neofetch............"
+    printf "\nInstalando Neofetch.............."
     sudo pacman -S --noconfirm neofetch > /dev/null 2>&1
     cp -r $1/dotfiles/.config/neofetch $HOME/.config/
     printf $OK
 
-    printf "\nInstalando cURL................"
+    printf "\nInstalando cURL.................."
     sudo pacman -S --noconfirm curl > /dev/null 2>&1
     printf $OK
 
-    printf "\nConfigurando Fonte............."
-    curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.tar.xz > /dev/null 2>&1
-    sudo mkdir -p /usr/share/fonts/caskaydiacove-nerd-font # > /dev/null 2>&1
-    sudo tar -xvf CascadiaCode.tar.xz -C /usr/share/fonts/caskaydiacove-nerd-font > /dev/null 2>&1
+    printf "\nConfigurando Fontes.............."
+    printf "\n........CaskaydiaCove Nerd Font"
+    curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VERSAO/CascadiaCode.tar.xz > /dev/null 2>&1
+    sudo mkdir -p /usr/local/share/fonts/caskaydiacove # > /dev/null 2>&1
+    sudo tar -xvf CascadiaCode.tar.xz -C /usr/local/share/fonts/caskaydiacove > /dev/null 2>&1
     rm CascadiaCode.tar.xz
+
+    printf "\n..........CaskaydiaMono Nerd Font"
+    curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VERSAO/CascadiaMono.tar.xz > /dev/null 2>&1
+    sudo mkdir -p /usr/local/share/fonts/caskaydiamono # > /dev/null 2>&1
+    sudo tar -xvf CascadiaMono.tar.xz -C /usr/local/share/fonts/caskaydiamono > /dev/null 2>&1
+    rm CascadiaMono.tar.xz
+
+    printf "\n..............Recarregando Fontes"
+    sudo fc-cache -f -v > /dev/null 2>&1
     printf $OK
-    
-    printf "\nCopiando .bashrc..............."
+
+    printf "\nCopiando .bashrc................."
     cp $1/dotfiles/.bashrc $HOME/
     printf $OK
 }
 
 function instala_hyprland() {
-    printf "\n\nInstalando Hyprland............"
+    printf "\n"
+    printf "\nInstalando Hyprland.............."
     sudo pacman -S --noconfirm hyprland > /dev/null 2>&1
     cp -r $1/dotfiles/.config/hypr $HOME/.config/
     printf $OK
 
-    printf "\nInstalando SDDM................\n"
-    sudo pacman -S --noconfirm sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 > /dev/null 2>&1
+    printf "\nInstalando SDDM.................."
+    sudo pacman -S --noconfirm sddm qt5-wayland qt6-wayland qt5-quickcontrols qt5-quickconstrols2 qt5-graphicaleffects qt5-svg > /dev/null 2>&1
     systemctl enable sddm > /dev/null 2>&1
     sudo cp -r $1/dotfiles/sddm/themes/* /usr/share/sddm/themes/
     sudo cp $1/dotfiles/sddm/sddm.conf /etc/
     printf $OK
 
-    printf "\nInstalando Hyprpaper..........."
+    printf "\nInstalando Hyprpaper............."
     sudo pacman -S --noconfirm hyprpaper > /dev/null 2>&1
     mkdir -p $HOME/Images/wallpapers
     cp $1/dotfiles/Images/wallpapers/* $HOME/Images/wallpapers/
     printf $OK
 
-    printf "\nInstalando Kitty..............."
+    printf "\nInstalando Kitty................."
     sudo pacman -S --noconfirm kitty > /dev/null 2>&1
     cp -r $1/dotfiles/.config/kitty $HOME/.config/
     printf $OK
 
-    printf "\nInstalando Firefox............."
+    printf "\nInstalando Dolphin..............."
+    sudo pacman -S --noconfirm dolphin > /dev/null 2>&1
+    printf $OK
+}
+
+function instala_programas() {
+    printf "\n"
+    printf "\nInstalando Firefox..............."
     sudo pacman -S --noconfirm firefox > /dev/null 2>&1
+    printf $OK
+
+    printf "\nInstalando Neovim................"
+    sudo pacman -S --noconfirm neovim > /dev/null 2>&1
+    cp -r $1/dotfiles/.config/nvim $HOME/
+    printf $OK
+
+    printf "\nInstalando Code - OSS............"
+    sudo pacman -S --noconfirm code > /dev/null 2>&1
+    # code-oss --install-extension vscodevim.vim > /dev/null 2>&1
+    # code-oss --install-extension vscode-icons-team.vscode-icons > /dev/null 2>&1
+    # code-oss --install-extension ms-python.python > /dev/null 2>&1
+    cp -r $1/dotfiles/.config/\"Code - OSS\" $HOME/.config/
+    printf $OK
+}
+
+function instala_diversos() {
+    printf "\n"
+    printf "\nInstalando Bluetooth............."
+    sudo pacman -S --noconfirm bluez bluez-utils blueman > /dev/null 2>&1
+    printf $OK
+
+    printf "\nInstalando Controle Brilho......."
+    sudo pacman -S --noconfirm brightnessctl > /dev/null 2>&1
+    printf $OK
+
+    printf "\nInstalando Pipewire.............."
+    sudo pacman -S --noconfirm pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire wireplumber > /dev/null 2>&1
+    printf $OK
+
+    printf "\nInstalando Network Manager......."
+    sudo pacman -S --noconfirm networkmanager network-manager-applet > /dev/null 2>&1
     printf $OK
 }
 
 function inicializador() {
-    printf "\n\nInicializando o Hyprland em:\n"
+    printf "\n\nReiniciando em:\n"
     for i in 5 4 3 2 1; do
         printf "$i"
         for j in 4 3 2 1; do
@@ -83,7 +128,7 @@ function inicializador() {
             sleep 0.25
         done
     done
-    Hyprland
+    reboot
 }
 
 function atualiza_sistema(){
@@ -100,10 +145,11 @@ if [ $(whoami) != "root" ]; then
     atualiza_sistema
     instala_basico $rota
     instala_hyprland $rota
+    instala_programas $rota
+    instala_diversos $rota
     printf "\n\nInstalação Finalizada\n"
     inicializador
 else
     printf "\n\nErro, o script não deve ser executado como root.\n\n"
     exit 0
 fi
-

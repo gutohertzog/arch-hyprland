@@ -14,11 +14,11 @@ Antes de começar a instalar os pacotes, é necessário realizar a instalação 
 Primeiro, é necessário instalar alguns pacotes importantes.
 
 São eles:
-- [Vim](https://wiki.archlinux.org/title/vim): para editar os arquivos de configuração;
-- [Git](https://wiki.archlinux.org/title/git) para baixar programas e pacotes;
+- [Git](https://wiki.archlinux.org/title/git) para baixar programas do GitHub;
+- [NeoVim](https://wiki.archlinux.org/title/neovim): para editar os arquivos de configuração;
 - [neofetch](https://linuxnightly.com/neofetch-command-in-linux/): para mostrar alguns dados do sistema;
 ```shell
-pacman -S vim git neofetch
+pacman -S neovim git neofetch
 ```
 
 ### 1.2. Baixando o Repositório ###
@@ -191,4 +191,3 @@ Para alterar, basta alterar o arquivo chamado em `~/.config/hypr/hyprpaper.conf`
 ## adicionando explorer ##
 O thunar parece ter funcionado MUITO melhor que o dolphin, já que exigiu quase nada de extra
 sudo pacman -S thunar thunar-volman gvfs
-
