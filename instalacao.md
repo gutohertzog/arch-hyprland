@@ -130,10 +130,10 @@ Pode-se navegar usando as `setas` do teclado ou então as teclas `hjkl` (Vim).
 | User account | Add a user | Digite usuário e senha |
 | | Sudo | yes |
 | | Confirm and exit | |
-| Profile | Profile | ***`Desktop`*** |
-| | Profiles | `Hyprland` |
+| Profile | Profile | ***`Minimal`*** |
+| | Profiles | |
 | | Graphics driver | `All open-source` |
-| | Greeter | `sddm` |
+| | Greeter | |
 | Audio | `Pipewire` | |
 | Kernels | `linux` | |
 | Additional packages | Info | |
@@ -163,4 +163,4 @@ Use o comando do `ping` para testar a conexão.
 
 - - - -
 ## 4. Próximo Passo ###
-Agora que o sistema está instalado e conectado à internet, vá para a etapa da instalação [manual](tutorial.md) ou [automática](script.md).
+Agora que o sistema está instalado e conectado à internet, vá para a etapa da instalação [manual](tutorial.md) (em construção) ou [automática](script.md) (ainda em testes).

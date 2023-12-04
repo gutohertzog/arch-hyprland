@@ -29,20 +29,23 @@ function instala_basico() {
     printf $OK
 
     printf "\nConfigurando Fontes.............."
-    printf "\n........CaskaydiaCove Nerd Font"
+    printf "\n....CaskaydiaCove Nerd Font......"
     curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VERSAO/CascadiaCode.tar.xz > /dev/null 2>&1
-    sudo mkdir -p /usr/local/share/fonts/caskaydiacove # > /dev/null 2>&1
+    sudo mkdir -p /usr/local/share/fonts/caskaydiacove > /dev/null 2>&1
     sudo tar -xvf CascadiaCode.tar.xz -C /usr/local/share/fonts/caskaydiacove > /dev/null 2>&1
     rm CascadiaCode.tar.xz
+    printf $OK
 
-    printf "\n..........CaskaydiaMono Nerd Font"
+
+    printf "\n....CaskaydiaMono Nerd Font......"
     curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VERSAO/CascadiaMono.tar.xz > /dev/null 2>&1
-    sudo mkdir -p /usr/local/share/fonts/caskaydiamono # > /dev/null 2>&1
+    sudo mkdir -p /usr/local/share/fonts/caskaydiamono > /dev/null 2>&1
     sudo tar -xvf CascadiaMono.tar.xz -C /usr/local/share/fonts/caskaydiamono > /dev/null 2>&1
     rm CascadiaMono.tar.xz
+    printf $OK
 
-    printf "\n..............Recarregando Fontes"
-    sudo fc-cache -f -v > /dev/null 2>&1
+    printf "\n....Recarregando Fontes.........."
+    sudo fc-cache -fv > /dev/null 2>&1
     printf $OK
 
     printf "\nCopiando .bashrc................."
@@ -58,16 +61,24 @@ function instala_hyprland() {
     printf $OK
 
     printf "\nInstalando SDDM.................."
+    sudo mkdir -p /usr/share/sddm/themes/
     sudo pacman -S --noconfirm sddm qt5-wayland qt6-wayland qt5-quickcontrols qt5-quickconstrols2 qt5-graphicaleffects qt5-svg > /dev/null 2>&1
-    systemctl enable sddm > /dev/null 2>&1
     sudo cp -r $1/dotfiles/sddm/themes/* /usr/share/sddm/themes/
     sudo cp $1/dotfiles/sddm/sddm.conf /etc/
+    systemctl enable sddm > /dev/null 2>&1
     printf $OK
 
     printf "\nInstalando Hyprpaper............."
     sudo pacman -S --noconfirm hyprpaper > /dev/null 2>&1
     mkdir -p $HOME/Images/wallpapers
     cp $1/dotfiles/Images/wallpapers/* $HOME/Images/wallpapers/
+    printf $OK
+
+    printf "\nInstalando Waybar................"
+    sudo pacman -S --noconfirm waybar > /dev/null 2>&1
+    sudo pacman -S --noconfirm ttf-font-awesome > /dev/null 2>&1
+    sudo cp $1/dotfiles/waybar $HOME/.config/
+    sudo usermod -a -G input $USER
     printf $OK
 
     printf "\nInstalando Kitty................."
@@ -93,10 +104,10 @@ function instala_programas() {
 
     printf "\nInstalando Code - OSS............"
     sudo pacman -S --noconfirm code > /dev/null 2>&1
-    # code-oss --install-extension vscodevim.vim > /dev/null 2>&1
-    # code-oss --install-extension vscode-icons-team.vscode-icons > /dev/null 2>&1
+    code-oss --install-extension vscodevim.vim > /dev/null 2>&1
+    code-oss --install-extension vscode-icons-team.vscode-icons > /dev/null 2>&1
     # code-oss --install-extension ms-python.python > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/\"Code - OSS\" $HOME/.config/
+    cp -r $1/dotfiles/.config/Code\ -\ OSS $HOME/.config/
     printf $OK
 }
 
@@ -110,11 +121,11 @@ function instala_diversos() {
     sudo pacman -S --noconfirm brightnessctl > /dev/null 2>&1
     printf $OK
 
-    printf "\nInstalando Pipewire.............."
-    sudo pacman -S --noconfirm pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire wireplumber > /dev/null 2>&1
+    printf "\nInstalando Pulseaudio............."
+    sudo pacman -S --noconfirm pulseaudio pavucontrol > /dev/null 2>&1
     printf $OK
 
-    printf "\nInstalando Network Manager......."
+    printf "\nInstalando Network Manager........"
     sudo pacman -S --noconfirm networkmanager network-manager-applet > /dev/null 2>&1
     printf $OK
 }

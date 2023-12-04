@@ -13,13 +13,13 @@ alias bateria="cat /sys/class/power_supply/BAT0/capacity" # porcentagem bateria
 # para ser executado ao se abrir um novo terminal
 neofetch
 
-# adiciona o Vim como editor padrão do sudo
+# adiciona o Neovim como editor padrão do sudo
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
 
 # criação do PS1
 texto="\[\e[38;5;3m\][\t] \[\033[0m\]" # adiciona hora
-texto+="\[\e[38;5;2m\]\w\[\033[0m\]\n" # adiciona o caminho completo
-texto+="\[\e[38;5;250m\]\u@\h \[\033[0m\]\$ " # linha terminal final usuário@máquina
+texto="$texto\[\e[38;5;2m\]\w\[\033[0m\]\n" # adiciona o caminho completo
+texto="$texto\[\e[38;5;250m\]\u@\h \[\033[0m\]\$ " # linha terminal final usuário@máquina
 
 PS1=$texto

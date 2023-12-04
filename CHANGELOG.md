@@ -1,8 +1,21 @@
 # LOG DE ALTERAÇÕES #
 
+## v.1.4.1 ##
+* Adicionado o script para realizar o backup das alterações;
+* Ainda testando as opções de audio *pipewire* e *pulseaudio*;
+* Adicionado a **Waybar** e uma primeira configuração;
+* Adicionado o Neovim;
+* Adicionado a fonte Caskaydia Mono Nerd Font na instalação;
+* Adicionado transparência no VS Code e Kitty;
+* Adicionado alguns pacotes do bluetooth, mas ainda sem testar apropriadamente;
+* Mantida a instalação **Mínimal**;
+* Removido o conteúdo do *tutorial.md*, já que muito conteúdo ainda será alterado;
+* Scripts movidos para uma pasta própria;
+* Tema do Hyprland movido para um arquivo separado *theme.conf*;
+
 ## v.1.4.0 ##
-* Alterando para primeiro funcionar o `install.sh` e depois os tutoriais.
-* Adicionado diversas tabelas (atalhos e pacotes).
+* Alterando para primeiro funcionar o `install.sh` e depois os tutoriais;
+* Adicionado diversas tabelas (atalhos e pacotes);
 
 ## v.1.3.1 ##
 * `install.sh`:

@@ -28,6 +28,7 @@ Esse script, quando executado, instalará todos os pacotes adicionais e copiará
 | Hypr ||
 | :---- | :---- |
 | [hyprland](https://hyprland.org) | gerenciador de janelas principal |
+| [waybar](https://github.com/Alexays/Waybar) | gerenciador da barra de tarefas |
 
 | Login ||
 | :---- | :---- |
@@ -60,6 +61,7 @@ Esse script, quando executado, instalará todos os pacotes adicionais e copiará
 | [dolphin](https://apps.kde.org/dolphin) | gerenciador de arquivos do kde |
 | [code-oss](https://wiki.archlinux.org/title/Visual_Studio_Code) | editor de código gui |
 | [neovim](https://neovim.io) | editor de texto cli |
+| [keepassxc](https://keepassxc.org) | gerenciador de senhas |
 <!-- | [ark](https://apps.kde.org/ark) | gerenciador de arquivos compactados do kde | -->
 
 | Fontes ||
@@ -84,6 +86,7 @@ Esse script, quando executado, instalará todos os pacotes adicionais e copiará
 | <kbd>Super</kbd> + <kbd>E</kbd> | abre o  explorador de arquivos Dolphin |
 | <kbd>Super</kbd> + <kbd>C</kbd> | abre o VS Code |
 | <kbd>Super</kbd> + <kbd>F</kbd> | abre o Firefox |
+| <kbd>Super</kbd> + <kbd>P</kbd> | abre o KeePassXC |
 
 ### Janelas ###
 | Teclas | Ação |
@@ -106,3 +109,6 @@ Esse script, quando executado, instalará todos os pacotes adicionais e copiará
 | <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | move a janela ativa para a área de trabalho especial |
 | <kbd>Super</kbd> + <kbd>S</kbd> | vai/volta da área de trabalho especial |
 | <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>J</kbd> | vai para a primeira área de trabalho vazia (da esquerda para direita) |
+
+### Desenvolvimento ###
+| <kbd>Super</kbd> + <kbd>A</kbd> | ativa e desativa a waybar |
