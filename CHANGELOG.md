@@ -1,6 +1,10 @@
 # LOG DE ALTERAÇÕES #
 
 ## v.1.4.1 ##
+* saída das execuções na instalação para um arquivo de log;
+* ajustes má digitação;
+
+## v.1.4.1 ##
 * Adicionado o script para realizar o backup das alterações;
 * Ainda testando as opções de audio *pipewire* e *pulseaudio*;
 * Adicionado a **Waybar** e uma primeira configuração;

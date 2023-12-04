@@ -124,23 +124,21 @@ Pode-se navegar usando as `setas` do teclado ou então as teclas `hjkl` (Vim).
 | | Compression | no |
 | Disk encryption | | |
 | Bootloader | Systemd-boot | |
+| Unified kernel images | Would like to use unified kernel images | no |
 | Swap | True | |
 | Hostname | archlinux | |
-| Boot password | | |
-| User account | Add a user | Digite usuário e senha |
-| | Sudo | yes |
+| Root password | | |
+| User account | Add a user | Enter username and password |
+| | Should user be a superuser? | yes |
 | | Confirm and exit | |
-| Profile | Profile | ***`Minimal`*** |
-| | Profiles | |
-| | Graphics driver | `All open-source` |
-| | Greeter | |
-| Audio | `Pipewire` | |
-| Kernels | `linux` | |
-| Additional packages | Info | |
-| Network configuration | `Use NetworkManager` | |
-| Timezone | America/Sao_Paulo | |
+| Profile | List of pre-programmed default_profiles | ***`Minimal`*** |
+| Audio | Choose an audio server | `Pipewire` |
+| Kernels | Choose which kernels to use | `linux` |
+| Additional packages | Write additional packages to install | |
+| Network configuration | Select one netword interface | `Use NetworkManager` |
+| Timezone | Select a timezone | America/Sao_Paulo |
 | Automatic time sync | True | |
-| Optional repositories | `multilib` | |
+| Optional repositories | Choose optional additional repositories | `multilib` |
 
 Depois de escolhida as configurações, inicie a instalação no `Install`.
 

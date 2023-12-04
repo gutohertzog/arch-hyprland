@@ -3,6 +3,7 @@
 # variável global OK em verde
 OK="\e[0;32mOK\e[0m"
 FONT_VERSAO="v3.1.1"
+LOG="instalacao.log"
 
 function autor(){
     clear
@@ -14,119 +15,148 @@ function autor(){
 }
 
 function instala_basico() {
+    printf "\n\n"
+    printf " Criando .config.............................."
+    printf "\n\n Criando .config\n" >> $LOG
+    mkdir "$HOME/.config" >> $LOG
+    printf $OK
+
     printf "\n"
-    printf "\nCriando .config.................."
-    mkdir "$HOME/.config" > /dev/null 2>&1
+    printf " Instalando Neofetch.........................."
+    printf "\n\n Instalando Neofetch\n" >> $LOG
+    sudo pacman -S --noconfirm neofetch >> $LOG
+    cp -r $1/dotfiles/.config/neofetch $HOME/.config/ >> $LOG
     printf $OK
 
-    printf "\nInstalando Neofetch.............."
-    sudo pacman -S --noconfirm neofetch > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/neofetch $HOME/.config/
+    printf "\n"
+    printf " Instalando cURL.............................."
+    printf "\n\n Instalando cURL\n" >> $LOG
+    sudo pacman -S --noconfirm curl >> $LOG
     printf $OK
 
-    printf "\nInstalando cURL.................."
-    sudo pacman -S --noconfirm curl > /dev/null 2>&1
+    printf "\n"
+    printf " Configuranco Fontes.........................."
+    printf "\n\n Configurando Fontes\n" >> $LOG
+    printf "\n"
+    printf "....CaskaydiaCove Nerd Font..................."
+    curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VERSAO/CascadiaCode.tar.xz >> $LOG
+    sudo mkdir -p /usr/local/share/fonts/caskaydiacove >> $LOG
+    sudo tar -xvf CascadiaCode.tar.xz -C /usr/local/share/fonts/caskaydiacove >> $LOG
+    rm CascadiaCode.tar.xz >> $LOG
     printf $OK
 
-    printf "\nConfigurando Fontes.............."
-    printf "\n....CaskaydiaCove Nerd Font......"
-    curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VERSAO/CascadiaCode.tar.xz > /dev/null 2>&1
-    sudo mkdir -p /usr/local/share/fonts/caskaydiacove > /dev/null 2>&1
-    sudo tar -xvf CascadiaCode.tar.xz -C /usr/local/share/fonts/caskaydiacove > /dev/null 2>&1
-    rm CascadiaCode.tar.xz
+    printf "\n"
+    printf "....CaskaydiaMono Nerd Font..................."
+    curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VERSAO/CascadiaMono.tar.xz >> $LOG
+    sudo mkdir -p /usr/local/share/fonts/caskaydiamono >> $LOG
+    sudo tar -xvf CascadiaMono.tar.xz -C /usr/local/share/fonts/caskaydiamono >> $LOG
+    rm CascadiaMono.tar.xz >> $LOG
     printf $OK
 
-
-    printf "\n....CaskaydiaMono Nerd Font......"
-    curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VERSAO/CascadiaMono.tar.xz > /dev/null 2>&1
-    sudo mkdir -p /usr/local/share/fonts/caskaydiamono > /dev/null 2>&1
-    sudo tar -xvf CascadiaMono.tar.xz -C /usr/local/share/fonts/caskaydiamono > /dev/null 2>&1
-    rm CascadiaMono.tar.xz
+    printf "\n"
+    printf "....Recarregando Fontes......................."
+    printf "\n Recarregando Fontes\n" >> $LOG
+    sudo fc-cache -fv >> $LOG
     printf $OK
 
-    printf "\n....Recarregando Fontes.........."
-    sudo fc-cache -fv > /dev/null 2>&1
-    printf $OK
-
-    printf "\nCopiando .bashrc................."
-    cp $1/dotfiles/.bashrc $HOME/
+    printf "\n"
+    printf " Copiando .bashrc............................."
+    printf "\n Copiando .bashrc\n" >> $LOG
+    cp $1/dotfiles/.bashrc $HOME/ >> $LOG
     printf $OK
 }
 
 function instala_hyprland() {
+    printf "\n\n"
+    printf " Instalando Hyprland.........................."
+    printf "\n\n Instalando Hyprland\n" >> $LOG
+    sudo pacman -S --noconfirm hyprland >> $LOG
+    cp -r $1/dotfiles/.config/hypr $HOME/.config/ >> $LOG
+    printf $OK
+
     printf "\n"
-    printf "\nInstalando Hyprland.............."
-    sudo pacman -S --noconfirm hyprland > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/hypr $HOME/.config/
+    printf " Instalando SDDM.............................."
+    printf "\n\n Instalando SDDM\n" >> $LOG
+    sudo mkdir -p /usr/share/sddm/themes/ >> $LOG
+    sudo pacman -S --noconfirm sddm qt5-wayland qt6-wayland qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects qt5-svg >> $LOG
+    sudo cp -r $1/dotfiles/sddm/themes/* /usr/share/sddm/themes/ >> $LOG
+    sudo cp $1/dotfiles/sddm/sddm.conf /etc/ >> $LOG
+    systemctl enable sddm >> $LOG
     printf $OK
 
-    printf "\nInstalando SDDM.................."
-    sudo mkdir -p /usr/share/sddm/themes/
-    sudo pacman -S --noconfirm sddm qt5-wayland qt6-wayland qt5-quickcontrols qt5-quickconstrols2 qt5-graphicaleffects qt5-svg > /dev/null 2>&1
-    sudo cp -r $1/dotfiles/sddm/themes/* /usr/share/sddm/themes/
-    sudo cp $1/dotfiles/sddm/sddm.conf /etc/
-    systemctl enable sddm > /dev/null 2>&1
+    printf "\n"
+    printf " Instalando Hyprpaper........................."
+    printf "\n\n Instalando Hyprpaper\n" >> $LOG
+    sudo pacman -S --noconfirm hyprpaper >> $LOG
+    mkdir -p $HOME/Images/wallpapers >> $LOG
+    cp $1/dotfiles/Images/wallpapers/* $HOME/Images/wallpapers/ >> $LOG
     printf $OK
 
-    printf "\nInstalando Hyprpaper............."
-    sudo pacman -S --noconfirm hyprpaper > /dev/null 2>&1
-    mkdir -p $HOME/Images/wallpapers
-    cp $1/dotfiles/Images/wallpapers/* $HOME/Images/wallpapers/
+    printf "\n"
+    printf " Instalando Waybar............................"
+    printf "\n\n Instalando Waybar\n" >> $LOG
+    sudo pacman -S --noconfirm waybar >> $LOG
+    sudo pacman -S --noconfirm ttf-font-awesome >> $LOG
+    sudo cp $1/dotfiles/.config/waybar $HOME/.config/ >> $LOG
+    sudo usermod -aG input $USER >> $LOG
     printf $OK
 
-    printf "\nInstalando Waybar................"
-    sudo pacman -S --noconfirm waybar > /dev/null 2>&1
-    sudo pacman -S --noconfirm ttf-font-awesome > /dev/null 2>&1
-    sudo cp $1/dotfiles/waybar $HOME/.config/
-    sudo usermod -a -G input $USER
+    printf "\n"
+    printf " Instalando Kitty............................."
+    printf "\n\n Instalando Kitty\n" >> $LOG
+    sudo pacman -S --noconfirm kitty >> $LOG
+    cp -r $1/dotfiles/.config/kitty $HOME/.config/ >> $LOG
     printf $OK
 
-    printf "\nInstalando Kitty................."
-    sudo pacman -S --noconfirm kitty > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/kitty $HOME/.config/
-    printf $OK
-
-    printf "\nInstalando Dolphin..............."
-    sudo pacman -S --noconfirm dolphin > /dev/null 2>&1
+    printf "\n"
+    printf " Instalando Dolphin..........................."
+    printf "\n\n Instalando Dolphin\n" >> $LOG
+    sudo pacman -S --noconfirm dolphin >> $LOG
     printf $OK
 }
 
 function instala_programas() {
+    printf "\n\n"
+    printf " Instalando Firefox..........................."
+    printf "\n\n Instalando Firefox\n" >> $LOG
+    sudo pacman -S --noconfirm firefox >> $LOG
+    printf $OK
+
     printf "\n"
-    printf "\nInstalando Firefox..............."
-    sudo pacman -S --noconfirm firefox > /dev/null 2>&1
+    printf " Instalando Neovim............................"
+    printf "\n\n Instalando Neovim\n" >> $LOG
+    sudo pacman -S --noconfirm neovim >> $LOG
+    cp -r $1/dotfiles/.config/nvim $HOME/ >> $LOG
     printf $OK
 
-    printf "\nInstalando Neovim................"
-    sudo pacman -S --noconfirm neovim > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/nvim $HOME/
+    printf "\n"
+    printf " Instalando Code - OSS........................"
+    printf "\n\n Instalando Code - OSS\n" >> $LOG
+    sudo pacman -S --noconfirm code >> $LOG
+    code-oss --install-extension vscodevim.vim >> $LOG
+    code-oss --install-extension vscode-icons-team.vscode-icons >> $LOG
+    # code-oss --install-extension ms-python.python >> $LOG
+    cp -r $1/dotfiles/.config/Code\ -\ OSS $HOME/.config/ >> $LOG
     printf $OK
 
-    printf "\nInstalando Code - OSS............"
-    sudo pacman -S --noconfirm code > /dev/null 2>&1
-    code-oss --install-extension vscodevim.vim > /dev/null 2>&1
-    code-oss --install-extension vscode-icons-team.vscode-icons > /dev/null 2>&1
-    # code-oss --install-extension ms-python.python > /dev/null 2>&1
-    cp -r $1/dotfiles/.config/Code\ -\ OSS $HOME/.config/
+    printf "\n"
+    printf " Instalando KeePassXC........................."
+    printf "\n\n Instalando KeePassXC\n" >> $LOG
+    sudo pacman -S --noconfirm keepassxc >> $LOG
     printf $OK
 }
 
 function instala_diversos() {
+    printf "\n\n"
+    printf " Instalando Bluetooth........................."
+    printf "\n\n Instalando Bluetooth\n" >> $LOG
+    sudo pacman -S --noconfirm bluez bluez-utils blueman >> $LOG
+    printf $OK
+
     printf "\n"
-    printf "\nInstalando Bluetooth............."
-    sudo pacman -S --noconfirm bluez bluez-utils blueman > /dev/null 2>&1
-    printf $OK
-
-    printf "\nInstalando Controle Brilho......."
-    sudo pacman -S --noconfirm brightnessctl > /dev/null 2>&1
-    printf $OK
-
-    printf "\nInstalando Pulseaudio............."
-    sudo pacman -S --noconfirm pulseaudio pavucontrol > /dev/null 2>&1
-    printf $OK
-
-    printf "\nInstalando Network Manager........"
-    sudo pacman -S --noconfirm networkmanager network-manager-applet > /dev/null 2>&1
+    printf " Instalando Brightnessctl....................."
+    printf "\n\n Instalando Brightnessctl\n" >> $LOG
+    sudo pacman -S --noconfirm brightnessctl >> $LOG
     printf $OK
 }
 
@@ -143,8 +173,17 @@ function inicializador() {
 }
 
 function atualiza_sistema(){
-    printf "\nAtualizando Sistema............"
-    sudo pacman -Suy --noconfirm > /dev/null 2>&1
+    printf "\n"
+    printf " Atualizando Sistema.........................."
+    printf "\n\n Atualizando Sistema\n" >> $LOG
+    sudo pacman -Suy --noconfirm >> $LOG
+    printf $OK
+}
+
+function cria_log(){
+    printf "\n"
+    printf "\nCriando o arquivo de log....................."
+    touch instalacao.log
     printf $OK
 }
 
@@ -153,6 +192,7 @@ if [ $(whoami) != "root" ]; then
     rota=$(pwd)
     autor
     printf "\nInstalação Iniciada\n"
+    cria_log
     atualiza_sistema
     instala_basico $rota
     instala_hyprland $rota
