@@ -10,20 +10,53 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.copyonselection": true,
     "vim.cursorStylePerMode.insert": "line",
     "vim.cursorStylePerMode.normal": "block",
     "vim.cursorStylePerMode.replace": "block-outline",
     "vim.cursorStylePerMode.visual": "block",
-    "vim.cursorStylePerMode.visualblock": "block",
-    "vim.cursorStylePerMode.visualline": "block",
+    "vim.cursorStylePerMode.visualblock": "underline",
+    "vim.cursorStylePerMode.visualline": "underline",
     "vim.foldfix": true,
     "vim.highlightedyank.enable": true,
     "vim.hlsearch": true,
+    "vim.incsearch": true,
     "vim.leader": "<Space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // comandos de navegação
+        { "before": [ "H" ], "after": [ "^" ]},
+        { "before": [ "L" ], "after": [ "$" ]},
+        // comandos para as abas
+        { "before": [ "<C-w>"], "commands": [ ":tabclose" ]},
+        // comandos para VS Code
+        { "before": [ "<Leader>", "c", "c" ], "commands": [ "workbench.action.quickOpen" ]},
+        { "before": [ "<Leader>", "w", "b" ], "commands": [ "workbench.action.toggleSidebarVisibility" ]},
+    ],
     "vim.useSystemClipboard": true,
     "vim.smartRelativeLine": true,
-    "window.menuBarVisibility": "toggle",
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": "#00000000", // transparente
+    "vim.statusBarColors.insert": ["#00FF0033", "#FFFFFF"], // verde
+    "vim.statusBarColors.visual": ["#FFFF0033", "#FFFFFF"], //amarelo
+    "vim.statusBarColors.visualline": ["#FFFF0033", "#FFFFFF"], // amarelo
+    "vim.statusBarColors.visualblock":  ["#FFFF0033", "#FFFFFF"], // amarelo
+    "vim.statusBarColors.replace": ["#FF000033", "#FFFFFF"], // vermelho
+    "vim.statusBarColors.commandlineinprogress": ["#0078D733", "#FFFFFF"], // azul VS Code
+    "vim.statusBarColors.searchinprogressmode": ["#EE82EE33", "#FFFFFF"], // violeta
+    // "vim.statusBarColors.easymotionmode": "#007ACC",
+    // "vim.statusBarColors.easymotioninputmode": "#007ACC",
+    // "vim.statusBarColors.surroundinputmode": "#007ACC",
     "workbench.iconTheme": "vscode-icons",
     "window.zoomLevel": -1,
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#00000000",
+        "statusBar.noFolderBackground": "#00000000",
+        "statusBar.debuggingBackground": "#00000000",
+        "statusBar.foreground": "#FFFFFF",
+        "statusBar.debuggingForeground": "#FFFFFF"
+    },
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    "update.mode": "manual",
 }

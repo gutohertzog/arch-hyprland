@@ -23,4 +23,3 @@ require("nvim-tree").setup({
 })
 
 vim.keymap.set('n', '<space><CR>', ':NvimTreeToggle<CR>', {silent=true})
-

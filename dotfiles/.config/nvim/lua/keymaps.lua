@@ -92,4 +92,3 @@ map('n', '<CR>', 'ciw') -- apaga a palavra e ativa o INSERT
 -- Misc --
 ----------
 --map('n', ';', ':') -- também usa ; para entrar no modo comando
-

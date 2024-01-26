@@ -28,6 +28,7 @@ Esse script, quando executado, instalará todos os pacotes adicionais e copiará
 | Hypr ||
 | :---- | :---- |
 | [hyprland](https://hyprland.org) | gerenciador de janelas principal |
+| [hyprpaper](https://github.com/hyprwm/hyprpaper) | gerenciador do papel de parede |
 | [waybar](https://github.com/Alexays/Waybar) | gerenciador da barra de tarefas |
 
 | Login ||
@@ -58,7 +59,7 @@ Esse script, quando executado, instalará todos os pacotes adicionais e copiará
 | [firefox](https://www.mozilla.org/pt-BR/firefox/new) | navegador de internet |
 | [kitty](https://sw.kovidgoyal.net/kitty) | emulador do terminal |
 | [neofetch](https://github.com/dylanaraps/neofetch) | mostra informações do hardware e software |
-| [dolphin](https://apps.kde.org/dolphin) | gerenciador de arquivos do kde |
+| [thunar](https://docs.xfce.org/xfce/thunar/start) | gerenciador de arquivos |
 | [code-oss](https://wiki.archlinux.org/title/Visual_Studio_Code) | editor de código gui |
 | [neovim](https://neovim.io) | editor de texto cli |
 | [keepassxc](https://keepassxc.org) | gerenciador de senhas |
@@ -82,8 +83,8 @@ Esse script, quando executado, instalará todos os pacotes adicionais e copiará
 ### Programas ###
 | Teclas | Ação |
 | :---- | :---- |
-| <kbd>Super</kbd> + <kbd>T</kbd> | abre o terminal Kitty |
-| <kbd>Super</kbd> + <kbd>E</kbd> | abre o  explorador de arquivos Dolphin |
+| <kbd>Super</kbd> + <kbd>K</kbd> | abre o terminal Kitty |
+| <kbd>Super</kbd> + <kbd>E</kbd> | abre o explorador de arquivos Thunar |
 | <kbd>Super</kbd> + <kbd>C</kbd> | abre o VS Code |
 | <kbd>Super</kbd> + <kbd>F</kbd> | abre o Firefox |
 | <kbd>Super</kbd> + <kbd>P</kbd> | abre o KeePassXC |

@@ -29,7 +29,7 @@
 
 -- ----------------------------------------------------------------------------
 -- destaca a seleção ao realizar um yank
--- Fonte: 
+-- Fonte:
 vim.api.nvim_create_autocmd('TextYankPost', {
     group = vim.api.nvim_create_augroup('highlight_yank', {}),
     desc = 'Destaca a seleção no yank',
@@ -38,4 +38,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank { higroup = 'IncSearch', timeout = 250 }
     end,
 })
-

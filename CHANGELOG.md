@@ -1,6 +1,21 @@
 # LOG DE ALTERAÇÕES #
 
-## v.1.4.1 ##
+## v.1.5.0 ##
+* definido o Thunar como gerenciador de arquivos;
+* definido o tema do Thunar para `Adwaita Dark`;
+* adicionado os pacotes `htop`, `exfat`;
+* removido o log da instalação;
+* melhorias na instalação dos pacotes no `install.sh`;
+* adicionado o gerenciador de senhas `KeePassXC`;
+* adicionado mais pastas nno script `backup.sh`;
+* adicionado mais configurações para o VS Code;
+* definido o layout do teclado para Dvorak Brasileiro;
+* adicionado cursores de [Oreo Cursors](https://github.com/varlesh/oreo-cursors);
+    * é possível listar e escolher os cursores usando o script de `ativa.sh` na pasta `~/.icons`;
+    * para as cores e formas, basta ver os arquivos .png na pasta;
+    * definido como padrão o Oreo Spark Lime;
+
+## v.1.4.2 ##
 * saída das execuções na instalação para um arquivo de log;
 * ajustes má digitação;
 
